@@ -1,0 +1,27 @@
+footer {
+    width: 100%;
+    background: #eddcd2;
+    .footer-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 1rem;
+        margin: auto;
+        padding: 1rem 0;
+        max-width: 1440px;
+        a {
+            color: var(--grey-3);
+        }
+        a:hover {
+            color: var(--main-blue);
+        }
+    }
+}
+
+@media (max-width: 1440px) {
+    footer {
+        .footer-wrapper {
+            max-width: 1240px;
+        }
+    }
+}
