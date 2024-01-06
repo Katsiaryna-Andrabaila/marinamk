@@ -1,7 +1,3 @@
-export const Logo = ()=> {
-    return (
-        <span>
-          Marina MK
-        </span>
-    )
-}
+export const Logo = () => {
+    return <span className="logo">MarinaMK</span>;
+};

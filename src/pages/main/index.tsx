@@ -1,12 +1,14 @@
-import { Header } from "../../widgets/header/Header"
+import { Header } from '../../widgets/header/Header';
+import { useTranslation } from 'react-i18next';
 
-export const MainPage = ()=>{
+export const MainPage = () => {
+    const { t } = useTranslation();
+
     return (
         <>
             <Header />
-            <main>Main page</main>
+            <main>{t('mainPage')}</main>
             <footer></footer>
         </>
-
-    )
-}
+    );
+};

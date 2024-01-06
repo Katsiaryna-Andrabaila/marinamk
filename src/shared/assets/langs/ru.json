@@ -1,9 +1,8 @@
 {
-    "loginPage": "Login page",
-    "redactor": "redactor page",
+    "mainPage": "Главная страница",
     "404Page": {
-      "title": "You have found a secret place",
-      "notFound": "Unfortunately, this is only a 404 page. You may have mistyped the address, or the page has been moved to another URL",
-      "mainPage": "Take me back to home page"
+        "title": "Вы нашли секретное место",
+        "notFound": "К сожалению, это только страница 404. Вы могли ошибиться при выборе адреса страницы, или же страница была перенесена на другой URL",
+        "mainPage": "Верните меня на главную страницу"
     }
 }
