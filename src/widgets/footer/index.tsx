@@ -5,14 +5,11 @@ export const Footer = () => {
     return (
         <footer>
             <div className="footer-wrapper">
-                <NavLink to="https://github.com/Andrabaila" target="_blank">
-                    Yury Andrabaila
-                </NavLink>
                 <NavLink
-                    to="https://github.com/Katsiaryna-Andrabaila"
+                    to="https://www.linkedin.com/in/katsiaryna-andrabaila-94669b23a/"
                     target="_blank"
                 >
-                    Katsiaryna Andrabaila
+                    @TechnoBoar 2024
                 </NavLink>
             </div>
         </footer>
