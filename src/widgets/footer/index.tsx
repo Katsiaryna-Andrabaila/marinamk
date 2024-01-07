@@ -3,14 +3,15 @@ import './footer.styles.scss';
 
 export const Footer = () => {
     return (
-        <footer>
+        <footer id="footer">
             <div className="footer-wrapper">
                 <NavLink
                     to="https://www.linkedin.com/in/katsiaryna-andrabaila-94669b23a/"
                     target="_blank"
                 >
-                    @TechnoBoar 2024
+                    @TechnoBoar
                 </NavLink>
+                <span>2024</span>
             </div>
         </footer>
     );

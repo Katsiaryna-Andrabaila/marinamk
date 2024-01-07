@@ -9,8 +9,10 @@ footer {
         margin: auto;
         padding: 1rem 0;
         max-width: 1440px;
-        a {
+        a,
+        span {
             color: var(--grey-3);
+            font-size: 14px;
         }
         a:hover {
             color: var(--main-blue);

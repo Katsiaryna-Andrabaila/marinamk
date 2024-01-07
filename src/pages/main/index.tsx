@@ -8,7 +8,7 @@ import { PriceSection } from '../../widgets/priceSection';
 
 export const MainPage = () => {
     return (
-        <body>
+        <>
             <Header />
             <main>
                 <EnterSection />
@@ -18,6 +18,6 @@ export const MainPage = () => {
                 <FeedbackSection />
             </main>
             <Footer />
-        </body>
+        </>
     );
 };

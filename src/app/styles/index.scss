@@ -26,13 +26,11 @@
     margin: auto;
     font-family: Arial, Helvetica, sans-serif;
 
-    body {
-        main {
-            flex: 1; //прижимаем футер к низу
-        }
-        footer {
-            margin-top: auto; //прижимаем футер к низу
-        }
+    main {
+        flex: 1; //прижимаем футер к низу
+    }
+    footer {
+        margin-top: auto; //прижимаем футер к низу
     }
 }
 
@@ -40,7 +38,6 @@ a {
     text-decoration: none;
 }
 
-body,
 main {
     width: 100%;
 }

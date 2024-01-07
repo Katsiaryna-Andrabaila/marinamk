@@ -5,7 +5,7 @@ export const MaterialsSection = () => {
     const { t } = useTranslation();
 
     return (
-        <section className="materials-section">
+        <section className="materials-section" id="materials">
             <h2>{t('materialsHeader')}</h2>
         </section>
     );

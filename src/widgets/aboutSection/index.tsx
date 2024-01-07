@@ -5,7 +5,7 @@ export const AboutSection = () => {
     const { t } = useTranslation();
 
     return (
-        <section className="about-section">
+        <section className="about-section" id="about">
             <h2>{t('aboutHeader')}</h2>
         </section>
     );
