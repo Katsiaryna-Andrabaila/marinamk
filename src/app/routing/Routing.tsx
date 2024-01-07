@@ -1,15 +1,14 @@
-import { Navigate, Route, Routes } from "react-router-dom"
-import { privateRoutes, publicRoutes } from "./routes";
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { privateRoutes, publicRoutes } from './routes';
 
-export const Routing = ()=> {
+export const Routing = () => {
     const isAuth = false;
     const routes = isAuth ? privateRoutes : publicRoutes;
 
     return (
         <Routes>
-            <Route path="/" >
-                {routes
-                    .map(({ path, component: Component }) => {
+            <Route path="/">
+                {routes.map(({ path, component: Component }) => {
                     return (
                         <Route
                             path={`/${path}/`}
@@ -20,7 +19,6 @@ export const Routing = ()=> {
                 })}
             </Route>
             <Route path="*" element={<Navigate to="/404" replace />} />
-
         </Routes>
-    )
-}
+    );
+};

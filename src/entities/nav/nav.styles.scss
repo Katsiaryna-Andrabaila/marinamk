@@ -1,0 +1,16 @@
+nav {
+    display: flex;
+    gap: 2rem;
+    margin-left: 20rem;
+    li {
+        list-style-type: none;
+        a {
+            color: #a09e9e;
+            cursor: pointer;
+        }
+        a:hover,
+        &.active {
+            color: #5e84f9;
+        }
+    }
+}

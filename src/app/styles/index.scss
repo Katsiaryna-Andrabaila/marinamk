@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+:root {
+    //colors
+    --main-blue: #cddff9;
+    --main-black: #1c1c1e;
+    --main-green: #02c66e;
+    --main-pink: #fcdade;
+    --error: #ff3f25;
+    --main-background: #f9f9f9;
+    --grey-1: #dcdcdc;
+    --grey-2: #bcbcbc;
+    --grey-3: #8f8f8f;
+    --grey-4: #f8f8f8;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+
+    main {
+        flex: 1; //прижимаем футер к низу
+    }
+    footer {
+        margin-top: auto; //прижимаем футер к низу
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    width: 100%;
+}

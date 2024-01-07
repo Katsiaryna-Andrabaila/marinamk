@@ -1,0 +1,37 @@
+.enter-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('../../shared/assets/img/nails_rose.jpg') no-repeat center
+        center;
+    background-size: cover;
+    .appointment-btn {
+        position: absolute;
+        top: 35%;
+        right: 15%;
+        width: 20vw;
+        height: 20vw;
+        border: none;
+        border-radius: 50%;
+        background: var(--main-pink);
+        padding: 1rem;
+        box-shadow:
+            -10px -10px 15px rgba(255, 255, 255, 0.5),
+            10px 10px 15px rgba(70, 70, 70, 0.12);
+        cursor: pointer;
+        color: white;
+        font-size: 2rem;
+    }
+    .appointment-btn:active {
+        box-shadow:
+            -10px -10px 15px rgba(255, 255, 255, 0.5),
+            10px 10px 15px rgba(70, 70, 70, 0.12),
+            inset -10px -10px 15px rgba(255, 255, 255, 0.5),
+            inset 10px 10px 15px rgba(70, 70, 70, 0.12);
+    }
+}
+@media (max-width: 1440px) {
+    .enter-section {
+        height: 90vh;
+    }
+}

@@ -11,7 +11,6 @@ export const AppContext = createContext<TypeAppContext>(initialContext);
 export const AppProvider = ({ children }: { children: ReactNode }) => {
     const [lang, setLang] = useState('en');
     const { i18n } = useTranslation();
-    console.log(lang);
 
     useEffect(() => {
         i18n.changeLanguage(lang);

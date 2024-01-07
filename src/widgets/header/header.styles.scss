@@ -1,0 +1,20 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1440px;
+    height: auto;
+    margin: auto;
+    padding: 1rem 0;
+}
+
+@media (max-width: 1440px) {
+    header {
+        max-width: 1240px;
+    }
+}

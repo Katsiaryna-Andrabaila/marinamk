@@ -1,9 +1,13 @@
 {
-    "loginPage": "Login page",
-    "redactor": "redactor page",
+    "mainPage": "الصفحة الرئيسية",
+    "appointment": "إحجز موعد",
+    "aboutHeader": "ْعَنِّي",
+    "priceHeader": "أسعارنا",
+    "materialsHeader": "المواد لدينا",
+    "feedbackHeader": "تعليق",
     "404Page": {
-      "title": "You have found a secret place",
-      "notFound": "Unfortunately, this is only a 404 page. You may have mistyped the address, or the page has been moved to another URL",
-      "mainPage": "Take me back to home page"
+        "title": "لقد وجدت مكانا سريا",
+        "notFound": "لسوء الحظ، هذه مجرد صفحة 404. ربما أخطأت في كتابة العنوان، أو تم نقل الصفحة إلى عنوان URL آخر",
+        "mainPage": "خذني إلى الصفحة الرئيسية"
     }
 }

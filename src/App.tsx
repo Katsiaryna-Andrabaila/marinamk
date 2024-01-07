@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Routing } from './app/routing/Routing';
 import { StrictMode } from 'react';
