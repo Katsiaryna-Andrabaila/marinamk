@@ -7,6 +7,7 @@ export const AboutSection = () => {
     return (
         <section className="about-section" id="about">
             <h2>{t('aboutHeader')}</h2>
+            <p>{t('aboutContent')}</p>
         </section>
     );
 };
