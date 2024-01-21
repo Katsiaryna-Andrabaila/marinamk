@@ -1,32 +1,35 @@
 import './nav.styles.scss';
 import { Link } from 'react-scroll';
+import { useTranslation } from 'react-i18next';
 
 export const Nav = () => {
+    const { t } = useTranslation();
+
     return (
         <nav>
             <li>
                 <Link to="about" activeClass="active">
-                    About me
+                    {t('nav.about')}
                 </Link>
             </li>
             <li>
                 <Link to="prices" activeClass="active">
-                    Prices
+                    {t('nav.prices')}
                 </Link>
             </li>
             <li>
                 <Link to="materials" activeClass="active">
-                    Materials
+                    {t('nav.materials')}
                 </Link>
             </li>
             <li>
                 <Link to="feedback" activeClass="active">
-                    Feedback
+                    {t('nav.feedback')}
                 </Link>
             </li>
             <li>
                 <Link to="footer" activeClass="active" spy>
-                    Contact
+                    {t('nav.contact')}
                 </Link>
             </li>
         </nav>
