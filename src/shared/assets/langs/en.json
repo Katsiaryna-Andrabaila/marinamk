@@ -1,5 +1,12 @@
 {
     "mainPage": "Main page",
+    "nav": {
+        "about": "About me",
+        "prices": "Prices",
+        "materials": "Materials",
+        "feedback": "Feedback",
+        "contact": "Contact"
+    },
     "appointment": "Make an appointment",
     "aboutHeader": "About me",
     "aboutContent": "My name is Marina and I am a certified nail technician. It is important for me that my client is satisfied with the quality and level of service provided.",

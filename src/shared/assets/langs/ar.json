@@ -1,5 +1,12 @@
 {
     "mainPage": "الصفحة الرئيسية",
+    "nav": {
+        "about": "ْعَنِّي",
+        "prices": "الأسعار",
+        "materials": "مواد",
+        "feedback": "تعليق",
+        "contact": "اتصال"
+    },
     "appointment": "إحجز موعد",
     "aboutHeader": "ْعَنِّي",
     "priceHeader": "أسعارنا",
