@@ -11,6 +11,10 @@
     "aboutHeader": "About me",
     "aboutContent": "My name is Marina and I am a certified nail technician. It is important for me that my client is satisfied with the quality and level of service provided.",
     "priceHeader": "Our prices",
+    "price": {
+        "manicure": "Manicure",
+        "pedicure": "Pedicure"
+    },
     "materialsHeader": "Our materials",
     "feedbackHeader": "Feedback",
     "404Page": {

@@ -1,7 +1,36 @@
 .price-section {
     width: 100%;
     background: var(--main-blue);
+    padding: 3rem 0;
+    margin: 0 auto;
+    text-align: center;
+
     h2 {
+        margin-bottom: 2rem;
         text-align: center;
+    }
+
+    .services {
+        display: flex;
+        justify-content: space-between;
+        width: 11rem;
+        margin: auto;
+        //background-color: #f5f3f3;
+        border: 1px solid #f5f3f3;
+        border-radius: 16px;
+        text-align: center;
+        font-size: 16px;
+        overflow: hidden;
+        span {
+            font-weight: 500;
+            height: 36px;
+            color: var(--grey-3);
+            padding: 9px 14px 9px 9px;
+            cursor: pointer;
+            border: none;
+        }
+        .service_active {
+            background-color: var(--main-pink);
+        }
     }
 }

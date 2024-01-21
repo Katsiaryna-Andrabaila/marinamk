@@ -10,6 +10,10 @@
     "appointment": "إحجز موعد",
     "aboutHeader": "ْعَنِّي",
     "priceHeader": "أسعارنا",
+    "price": {
+        "manicure": "صباغة الاظافر",
+        "pedicure": "باديكير"
+    },
     "aboutContent": "اسمي مارينا وأنا فني أظافر معتمد. من المهم بالنسبة لي أن يكون عميلي راضيًا عن جودة ومستوى الخدمة المقدمة",
     "materialsHeader": "المواد لدينا",
     "feedbackHeader": "تعليق",
