@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './priceSection.styles.scss';
 import { useTranslation } from 'react-i18next';
+import { ManicurePrices } from 'features/manicurePrices';
+import { PedicurePrices } from 'features/pedicurePrices';
 
 export const PriceSection = () => {
     const { t } = useTranslation();
@@ -32,6 +34,11 @@ export const PriceSection = () => {
                     {t('price.pedicure')}
                 </span>
             </div>
+            {activeService === 'manicure' ? (
+                <ManicurePrices />
+            ) : (
+                <PedicurePrices />
+            )}
         </section>
     );
 };

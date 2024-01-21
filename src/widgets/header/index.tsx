@@ -6,9 +6,11 @@ import './header.styles.scss';
 export const Header = () => {
     return (
         <header>
-            <Logo />
-            <Nav />
-            <Langs />
+            <div className="header_wrapper">
+                <Logo />
+                <Nav />
+                <Langs />
+            </div>
         </header>
     );
 };

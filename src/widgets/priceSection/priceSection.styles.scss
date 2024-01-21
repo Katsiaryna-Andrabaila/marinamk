@@ -15,7 +15,6 @@
         justify-content: space-between;
         width: 11rem;
         margin: auto;
-        //background-color: #f5f3f3;
         border: 1px solid #f5f3f3;
         border-radius: 16px;
         text-align: center;
@@ -24,13 +23,32 @@
         span {
             font-weight: 500;
             height: 36px;
-            color: var(--grey-3);
+            color: var(--grey-5);
             padding: 9px 14px 9px 9px;
             cursor: pointer;
             border: none;
         }
         .service_active {
             background-color: var(--main-pink);
+        }
+    }
+
+    .manicure_prices {
+        width: 50%;
+        margin: auto;
+        .manicure_prices_unit {
+            margin: 3rem auto;
+            list-style-type: none;
+            color: var(--grey-5);
+            h3 {
+                margin: 1rem 0;
+            }
+            .manicure_service_price {
+                display: flex;
+                justify-content: space-between;
+                padding: 2rem 0;
+                border-bottom: 1px solid #f5f3f3;
+            }
         }
     }
 }
