@@ -30,7 +30,10 @@
         "removing_extension": "Removing extended nails",
         "removing_gel": "Removing gel polish",
         "repair": "Single nail repair",
-        "nail_extension": "Single nail extension"
+        "nail_extension": "Single nail extension",
+        "pedicure_without": "Pedicure (without coating)",
+        "pedicure_coating": "Pedicure + plain coating",
+        "pedicure_removal_coating": "Pedicure with removal and single-color coating"
     },
     "materialsHeader": "Our materials",
     "feedbackHeader": "Feedback",

@@ -30,7 +30,10 @@
         "removing_extension": "Снятие наращенных ногтей",
         "removing_gel": "Снятие гель-лака",
         "repair": "Ремонт ногтя",
-        "nail_extension": "Наращивание ногтя"
+        "nail_extension": "Наращивание ногтя",
+        "pedicure_without": "Педикюр (без покрытия)",
+        "pedicure_coating": "Педикюр + однотонное покрытие",
+        "pedicure_removal_coating": "Педикюр со снятием и однотонным покрытием"
     },
     "materialsHeader": "Наши материалы",
     "feedbackHeader": "Отзывы",

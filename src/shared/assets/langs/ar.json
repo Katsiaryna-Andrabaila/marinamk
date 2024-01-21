@@ -29,7 +29,10 @@
         "removing_extension": "إزالة الأظافر الممتدة",
         "removing_gel": "إزالة طلاء الجل",
         "repair": "إصلاح مسمار واحد",
-        "nail_extension": "تمديد مسمار واحد"
+        "nail_extension": "تمديد مسمار واحد",
+        "pedicure_without": "باديكير (بدون طلاء)",
+        "pedicure_coating": "باديكير + طلاء عادي",
+        "pedicure_removal_coating": "باديكير مع إزالة وطلاء أحادي اللون"
     },
     "aboutContent": "اسمي مارينا وأنا فني أظافر معتمد. من المهم بالنسبة لي أن يكون عميلي راضيًا عن جودة ومستوى الخدمة المقدمة",
     "materialsHeader": "المواد لدينا",

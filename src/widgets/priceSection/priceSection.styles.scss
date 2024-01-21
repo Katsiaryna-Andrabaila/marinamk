@@ -33,17 +33,17 @@
         }
     }
 
-    .manicure_prices {
+    .service_prices {
         width: 50%;
         margin: auto;
-        .manicure_prices_unit {
-            margin: 3rem auto;
+        .service_prices_unit {
+            margin: 3rem auto 0;
             list-style-type: none;
             color: var(--grey-5);
             h3 {
-                margin: 1rem 0;
+                margin: 1rem 0 0;
             }
-            .manicure_service_price {
+            .service_price {
                 display: flex;
                 justify-content: space-between;
                 padding: 2rem 0;
