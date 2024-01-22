@@ -1,8 +1,33 @@
 .materials-section {
     width: 100%;
     background: var(--main-pink);
+    padding: 3rem 0;
+    margin: 0 auto;
+    text-align: center;
 
     h2 {
+        margin-bottom: 2rem;
         text-align: center;
+    }
+
+    .materials_images {
+        display: flex;
+        justify-content: space-between;
+        max-height: 10rem;
+        width: 90%;
+        margin: 2rem auto 0;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 10%;
+            img {
+                object-fit: contain;
+                width: 100%;
+            }
+            .vogue_img {
+                width: 60%;
+            }
+        }
     }
 }

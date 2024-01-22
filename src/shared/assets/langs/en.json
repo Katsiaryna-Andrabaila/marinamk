@@ -10,7 +10,7 @@
     "appointment": "Make an appointment",
     "aboutHeader": "About me",
     "aboutContent": "My name is Marina and I am a certified nail technician. It is important for me that my client is satisfied with the quality and level of service provided.",
-    "priceHeader": "Our prices",
+    "priceHeader": "Prices",
     "price": {
         "manicure": "Manicure",
         "pedicure": "Pedicure",
@@ -35,7 +35,8 @@
         "pedicure_coating": "Pedicure + plain coating",
         "pedicure_removal_coating": "Pedicure with removal and single-color coating"
     },
-    "materialsHeader": "Our materials",
+    "materialsHeader": "Materials",
+    "materialsContent": "In my work, I use only proven materials so that my clients are always satisfied with the quality and durability of the nail coating.",
     "feedbackHeader": "Feedback",
     "404Page": {
         "title": "You have found a secret place",
