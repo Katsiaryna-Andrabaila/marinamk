@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import './priceSection.styles.scss';
 import { useTranslation } from 'react-i18next';
