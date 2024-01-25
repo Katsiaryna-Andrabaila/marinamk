@@ -11,12 +11,25 @@ footer {
 
     .footer-wrapper {
         display: flex;
-        justify-content: flex-end;
-        align-items: center;
+        justify-content: space-between;
+        align-items: flex-end;
         gap: 1rem;
         margin: auto;
         padding: 1rem 0;
         max-width: 1440px;
+        .map_wrapper {
+            width: 70%;
+            height: 20rem;
+            border-radius: 16px;
+            margin: 1rem 0 2rem;
+            .map {
+                width: 70%;
+                height: 20rem;
+                border-radius: 8px;
+                overflow: hidden;
+                margin-bottom: 2rem;
+            }
+        }
         a,
         span {
             color: var(--grey-3);

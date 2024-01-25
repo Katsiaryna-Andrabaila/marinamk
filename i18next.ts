@@ -1,6 +1,6 @@
-import en from './src/shared/assets/langs/en.json';
-import ru from './src/shared/assets/langs/ru.json';
-import ar from './src/shared/assets/langs/ar.json';
+import en from './src/shared/langs/en.json';
+import ru from './src/shared/langs/ru.json';
+import ar from './src/shared/langs/ar.json';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
