@@ -1,8 +1,64 @@
 .feedback-section {
     width: 100%;
     background: var(--main-blue);
+    padding: 3rem 0;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 
     h2 {
         text-align: center;
+    }
+
+    .feedback_wrapper {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: nowrap;
+        max-width: 1440px;
+        overflow-x: scroll;
+        padding: 2rem;
+        margin: auto;
+
+        .feedback_card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 0.5rem;
+            min-width: 12rem;
+            border: 1px solid var(--grey-4);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+
+            .feedback_text {
+                background: url(/icons/quote.svg) no-repeat;
+                background-size: 20%;
+                background-color: rgb(248, 248, 248, 0.6);
+                border-radius: 0.5rem;
+                padding: 1.5rem 0.5rem 0.5rem 1.8rem;
+                font-style: italic;
+                text-align: left;
+            }
+
+            .feedback_author {
+                font-weight: 600;
+                text-align: end;
+            }
+        }
+    }
+
+    .feedback_wrapper::-webkit-scrollbar {
+        height: 10px;
+    }
+
+    .feedback_wrapper::-webkit-scrollbar-track {
+        -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+        background-color: #f9f9fd;
+        border-radius: 10px;
+    }
+
+    .feedback_wrapper::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: linear-gradient(180deg, #8ce2fa, var(--main-pink));
+        cursor: pointer;
     }
 }

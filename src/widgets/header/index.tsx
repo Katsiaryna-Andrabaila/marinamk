@@ -1,4 +1,4 @@
-import { Langs } from 'entities/langs';
+import { Langs } from 'features/langs';
 import { Nav } from 'entities/nav';
 import { Logo } from 'shared/logo';
 import './header.styles.scss';

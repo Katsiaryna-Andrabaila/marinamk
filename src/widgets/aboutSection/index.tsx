@@ -17,7 +17,7 @@ export const AboutSection = () => {
                         alt="Nail service"
                         className={`about_image${el + i}`}
                         fill={true}
-                        sizes="(max-width: 768px) 100%, (max-width: 1200px) 50$"
+                        sizes="(max-width: 768px) 100%, (max-width: 1200px) 50%"
                     />
                 ))}
             </div>

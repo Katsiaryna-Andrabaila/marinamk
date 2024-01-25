@@ -1,6 +1,6 @@
 import './materialsSection.styles.scss';
 import { useTranslation } from 'react-i18next';
-import Link from 'next/link';
+import { MaterialLink } from 'features/materialLink';
 
 export const MaterialsSection = () => {
     const { t } = useTranslation();
@@ -10,30 +10,43 @@ export const MaterialsSection = () => {
             <h2>{t('materialsHeader')}</h2>
             <p>{t('materialsContent')}</p>
             <div className="materials_images">
-                <Link href="https://voguenailsru.ru/" target="_blank">
-                    <img
-                        src="https://voguenailsru.ru/upload/medialibrary/a73/a73572cc88d26b16971cf038879d41ea.png"
-                        className="vogue_img"
-                    />
-                </Link>
-                <Link href="https://n-club.pro/" target="_blank">
-                    <img src="https://n-club.pro/img/nail-club-logo-1642600196.jpg" />
-                </Link>
-                <Link href="https://runail.ru/" target="_blank">
-                    <img src="https://runail.ru/local/styles/img/logo.webp" />
-                </Link>
-                <Link href="https://holymollynails.eu/" target="_blank">
-                    <img src="https://holymollynails.eu/wp-content/uploads/2021/09/cropped-holymollylogo-4-145x60.png" />
-                </Link>
-                <Link href="https://fresh-prof.ru/" target="_blank">
-                    <img src="https://fresh-prof.ru/upload/CNext/a39/a391537b85e441df2ae14a8bb8178a91.jpg" />
-                </Link>
-                <Link href="https://miis.pro/" target="_blank">
-                    <img src="https://miis.pro/storage/img/logo-dark.png" />
-                </Link>
-                <Link href="https://opzia.ru/" target="_blank">
-                    <img src="https://opzia.ru/wp-content/themes/opzia-adm/image/svg/logo.svg" />
-                </Link>
+                <MaterialLink
+                    href="https://voguenailsru.ru/"
+                    src="/img/vogue.png"
+                    alt="vogue"
+                    sizes="(max-width: 768px) 60%, (max-width: 1200px) 60%"
+                    className="vogue_img"
+                />
+                <MaterialLink
+                    href="https://n-club.pro"
+                    src="/img/nail_club.jpg"
+                    alt="nail-club"
+                />
+                <MaterialLink
+                    href="https://runail.ru/"
+                    src="/img/runail.webp"
+                    alt="ru-nail"
+                />
+                <MaterialLink
+                    href="https://holymollynails.eu/"
+                    src="/img/holy_molly.png"
+                    alt="holy-molly"
+                />
+                <MaterialLink
+                    href="https://fresh-prof.ru/"
+                    src="/img/fresh_prof.jpg"
+                    alt="fresh-prof"
+                />
+                <MaterialLink
+                    href="https://miis.pro/"
+                    src="/img/miis.png"
+                    alt="miis"
+                />
+                <MaterialLink
+                    href="https://opzia.ru/"
+                    src="/img/opzia.svg"
+                    alt="opzia"
+                />
             </div>
         </section>
     );
