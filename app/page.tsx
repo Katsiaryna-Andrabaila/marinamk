@@ -1,13 +1,13 @@
 'use client';
 
 import { AppProvider } from 'app/context';
-import { AboutSection } from '../src/widgets/aboutSection';
-import { EnterSection } from '../src/widgets/enterSection';
-import { FeedbackSection } from '../src/widgets/feedbackSection';
-import { Footer } from '../src/widgets/footer';
-import { Header } from '../src/widgets/header';
-import { MaterialsSection } from '../src/widgets/materialsSection';
-import { PriceSection } from '../src/widgets/priceSection';
+import { AboutSection } from 'widgets/aboutSection';
+import { EnterSection } from 'widgets/enterSection';
+import { FeedbackSection } from 'widgets/feedbackSection';
+import { Footer } from 'widgets/footer';
+import { Header } from 'widgets/header';
+import { MaterialsSection } from 'widgets/materialsSection';
+import { PriceSection } from 'widgets/priceSection';
 import '../i18next';
 
 function MainPage() {

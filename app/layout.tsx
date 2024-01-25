@@ -1,4 +1,4 @@
-import '../src/app/styles/index.scss';
+import 'app/styles/index.scss';
 
 export const metadata = {
     title: 'Marina MK Nails',
