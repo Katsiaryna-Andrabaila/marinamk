@@ -1,77 +1,58 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve",
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": "src",
-    "paths": {
-      "app/*": [
-        "app/*"
-      ],
-      "entity/*": [
-        "entity/*"
-      ],
-      "features/*": [
-        "features/*"
-      ],
-      "pages/*": [
-        "pages/*"
-      ],
-      "shared/*": [
-        "shared/*"
-      ],
-      "widgets/*": [
-        "widgets/*"
-      ]
+    "compilerOptions": {
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "module": "ESNext",
+        "skipLibCheck": true,
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "preserve",
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "baseUrl": "src",
+        "paths": {
+            "app/*": ["app/*"],
+            "entity/*": ["entity/*"],
+            "features/*": ["features/*"],
+            "shared/*": ["shared/*"],
+            "widgets/*": ["widgets/*"]
+        },
+        "allowJs": true,
+        "incremental": true,
+        "esModuleInterop": true,
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ]
     },
-    "allowJs": true,
-    "incremental": true,
-    "esModuleInterop": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
-  },
-  "include": [
-    "src",
-    "i18next.ts",
-    "i18next.d.ts",
-    "app/page.tsx",
-    ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/**/*.ts",
-    "**/**/*.tsx",
-    "**/**/**/*.ts",
-    "**/**/**/*.tsx",
-    "**/**/**/**/*.ts",
-    "**/**/**/**/*.tsx"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "include": [
+        "src",
+        "i18next.ts",
+        "i18next.d.ts",
+        "app/page.tsx",
+        ".next/types/**/*.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/**/*.ts",
+        "**/**/*.tsx",
+        "**/**/**/*.ts",
+        "**/**/**/*.tsx",
+        "**/**/**/**/*.ts",
+        "**/**/**/**/*.tsx"
+    ],
+    "references": [
+        {
+            "path": "./tsconfig.node.json"
+        }
+    ],
+    "exclude": ["node_modules"]
 }
