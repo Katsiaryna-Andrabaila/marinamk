@@ -1,6 +1,6 @@
-import { PageNotFound } from "../../pages/404";
-import { MainPage } from "../../pages/main";
-import { Route } from "./types";
+import { PageNotFound } from '../../../app/not-found';
+import { MainPage } from '../../pages/main';
+import { Route } from './types';
 
 export const publicRoutes: Route[] = [
     { path: '/', component: MainPage },
