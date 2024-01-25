@@ -3,6 +3,7 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { TypeAppContext } from './types';
 import { useTranslation } from 'react-i18next';
+import '../../../i18next';
 
 const initialContext = {
     lang: 'en',

@@ -1,4 +1,3 @@
-import { AppProvider } from '../src/app/context';
 import '../src/app/styles/index.scss';
 
 export const metadata = {
@@ -21,9 +20,7 @@ export default function RootLayout({
                     content="width=device-width, initial-scale=1.0"
                 />
             </head>
-            <body>
-                <AppProvider>{children}</AppProvider>
-            </body>
+            <body>{children}</body>
         </html>
     );
 }
