@@ -1,26 +1,28 @@
 'use client';
 
-import { BrowserRouter } from 'react-router-dom';
-import { Routing } from '../src/app/routing/Routing';
-import { StrictMode } from 'react';
-import { AppProvider } from '../src/app/context';
 import '../i18next';
-import '../src/app/styles/index.scss';
+import { AboutSection } from '../src/widgets/aboutSection';
+import { EnterSection } from '../src/widgets/enterSection';
+import { FeedbackSection } from '../src/widgets/feedbackSection';
+import { Footer } from '../src/widgets/footer';
+import { Header } from '../src/widgets/header';
+import { MaterialsSection } from '../src/widgets/materialsSection';
+import { PriceSection } from '../src/widgets/priceSection';
 
-function App() {
-    /* if (typeof document !== 'undefined') {
-        return;
-    } */
-
+function MainPage() {
     return (
-        <StrictMode>
-            <AppProvider>
-                <BrowserRouter>
-                    <Routing />
-                </BrowserRouter>
-            </AppProvider>
-        </StrictMode>
+        <>
+            <Header />
+            <main>
+                <EnterSection />
+                <AboutSection />
+                <PriceSection />
+                <MaterialsSection />
+                <FeedbackSection />
+            </main>
+            <Footer />
+        </>
     );
 }
 
-export default App;
+export default MainPage;
