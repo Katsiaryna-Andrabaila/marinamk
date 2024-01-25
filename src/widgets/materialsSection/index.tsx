@@ -1,6 +1,7 @@
 import './materialsSection.styles.scss';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const MaterialsSection = () => {
     const { t } = useTranslation();
@@ -11,28 +12,61 @@ export const MaterialsSection = () => {
             <p>{t('materialsContent')}</p>
             <div className="materials_images">
                 <Link href="https://voguenailsru.ru/" target="_blank">
-                    <img
-                        src="https://voguenailsru.ru/upload/medialibrary/a73/a73572cc88d26b16971cf038879d41ea.png"
+                    <Image
+                        src="/img/vogue.png"
                         className="vogue_img"
+                        alt="vogue"
+                        fill={true}
+                        sizes="(max-width: 768px) 60%, (max-width: 1200px) 60%"
                     />
                 </Link>
                 <Link href="https://n-club.pro/" target="_blank">
-                    <img src="https://n-club.pro/img/nail-club-logo-1642600196.jpg" />
+                    <Image
+                        src="/img/nail_club.jpg"
+                        alt="nail-club"
+                        fill={true}
+                        sizes="(max-width: 768px) 10%, (max-width: 1200px) 10%"
+                    />
                 </Link>
                 <Link href="https://runail.ru/" target="_blank">
-                    <img src="https://runail.ru/local/styles/img/logo.webp" />
+                    <Image
+                        src="/img/runail.webp"
+                        alt="ru-nail"
+                        fill={true}
+                        sizes="(max-width: 768px) 10%, (max-width: 1200px) 10%"
+                    />
                 </Link>
                 <Link href="https://holymollynails.eu/" target="_blank">
-                    <img src="https://holymollynails.eu/wp-content/uploads/2021/09/cropped-holymollylogo-4-145x60.png" />
+                    <Image
+                        src="/img/holy_molly.png"
+                        alt="holy-molly"
+                        fill={true}
+                        sizes="(max-width: 768px) 10%, (max-width: 1200px) 10%"
+                    />
                 </Link>
                 <Link href="https://fresh-prof.ru/" target="_blank">
-                    <img src="https://fresh-prof.ru/upload/CNext/a39/a391537b85e441df2ae14a8bb8178a91.jpg" />
+                    <Image
+                        src="/img/fresh_prof.jpg"
+                        alt="fresh-prof"
+                        fill={true}
+                        sizes="(max-width: 768px) 10%, (max-width: 1200px) 10%"
+                    />
                 </Link>
                 <Link href="https://miis.pro/" target="_blank">
-                    <img src="https://miis.pro/storage/img/logo-dark.png" />
+                    <Image
+                        src="/img/miis.png"
+                        alt="miis"
+                        fill={true}
+                        sizes="(max-width: 768px) 10%, (max-width: 1200px) 10%"
+                    />
                 </Link>
                 <Link href="https://opzia.ru/" target="_blank">
-                    <img src="https://opzia.ru/wp-content/themes/opzia-adm/image/svg/logo.svg" />
+                    <Image
+                        src="/img/opzia.svg"
+                        alt="opzia"
+                        fill={true}
+                        sizes="(max-width: 768px) 10%, (max-width: 1200px) 10%"
+                    />
                 </Link>
             </div>
         </section>
