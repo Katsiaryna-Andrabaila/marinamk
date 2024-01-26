@@ -12,11 +12,19 @@ const initialContext = {
 export const AppContext = createContext<TypeAppContext>(initialContext);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-    const [lang, setLang] = useState('en');
+    const [lang, setLang] = useState<string | null>(null);
     const { i18n } = useTranslation();
 
     useEffect(() => {
-        i18n.changeLanguage(lang);
+        const userLang = localStorage.getItem('marinamk-lang');
+        setLang(userLang ?? 'en');
+    }, []);
+
+    useEffect(() => {
+        if (lang) {
+            i18n.changeLanguage(lang);
+            localStorage.setItem('marinamk-lang', lang);
+        }
     }, [lang, i18n]);
 
     const value = {
