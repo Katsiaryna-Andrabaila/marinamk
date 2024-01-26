@@ -23,7 +23,13 @@ export const Footer = ({ isAbsolute }: FooterProps) => {
                 <div className="footer_contact">
                     <SocialLinks />
                     <div className="map_wrapper">
-                        <p>{t('howToFind')}</p>
+                        <p className="address">
+                            {t('howToFind')}{' '}
+                            <span>
+                                6 Souzan Moubarak, AZ Zaytoun Al Qebleyah,
+                                Amreya, Cairo Governorate 4511023
+                            </span>
+                        </p>
                         <MapComponent />
                     </div>
                 </div>

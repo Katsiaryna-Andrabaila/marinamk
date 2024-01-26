@@ -13,7 +13,7 @@ export const SocialLinks = () => {
                     alt="facebook-link"
                     width={48}
                     height={48}
-                    sizes="(max-width: 768px) 60%, (max-width: 1200px) 60%"
+                    sizes="(max-width: 768px) 48px, (max-width: 1200px) 48px"
                 />
             </Link>
             <Link
@@ -25,7 +25,7 @@ export const SocialLinks = () => {
                     alt="instagram-link"
                     width={48}
                     height={48}
-                    sizes="(max-width: 768px) 60%, (max-width: 1200px) 60%"
+                    sizes="(max-width: 768px) 48px, (max-width: 1200px) 48px"
                 />
             </Link>
             <Link
@@ -37,7 +37,7 @@ export const SocialLinks = () => {
                     alt="tiktok-link"
                     width={48}
                     height={48}
-                    sizes="(max-width: 768px) 60%, (max-width: 1200px) 60%"
+                    sizes="(max-width: 768px) 48px, (max-width: 1200px) 48px"
                 />
             </Link>
         </div>

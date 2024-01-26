@@ -44,7 +44,7 @@ const MapComponent = () => {
                         features: [new Feature(new Point(CairoPosition))],
                     }),
                     style: {
-                        'circle-radius': 9,
+                        'circle-radius': 15,
                         'circle-fill-color': '#1f6fde',
                     },
                 }),
