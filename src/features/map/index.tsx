@@ -10,6 +10,9 @@ import { useGeographic } from 'ol/proj.js';
 import VectorLayer from 'ol/layer/Vector';
 import ScaleLineControl from 'ol/control/ScaleLine';
 import { Zoom } from 'ol/control';
+import VectorSource from 'ol/source/Vector';
+import { Feature } from 'ol';
+import { Point } from 'ol/geom';
 
 const MapComponent = () => {
     const [, setIsBrowser] = useState(false);
@@ -25,25 +28,30 @@ const MapComponent = () => {
 
     const mapRef = useRef<Map>();
     mapRef.current = map;
-    const [zoom, setZoom] = useState<number | undefined>(14);
+    const [zoom, setZoom] = useState<number | undefined>(16);
 
     const scaleLineControl = new ScaleLineControl();
     const zoomControl = new Zoom({});
+
+    const CairoPosition = [31.299, 30.0998];
 
     useEffect(() => {
         const map = new Map({
             layers: [
                 new TileLayer({ source: new OSM() }),
                 new VectorLayer({
+                    source: new VectorSource({
+                        features: [new Feature(new Point(CairoPosition))],
+                    }),
                     style: {
-                        'circle-radius': 10,
+                        'circle-radius': 9,
                         'circle-fill-color': '#1f6fde',
                     },
                 }),
             ],
             controls: [scaleLineControl, zoomControl],
             view: new View({
-                center: [31.4, 30.2],
+                center: CairoPosition,
                 zoom: zoom,
                 minZoom: 0,
                 maxZoom: 28,
