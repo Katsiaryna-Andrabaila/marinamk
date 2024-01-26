@@ -4,6 +4,8 @@ import './footer.styles.scss';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useTranslation } from 'react-i18next';
+import { SocialLinks } from 'features/socialLinks';
+
 const MapComponent = dynamic(() => import('features/map'), {
     ssr: false,
 });
@@ -18,10 +20,12 @@ export const Footer = ({ isAbsolute }: FooterProps) => {
     return (
         <footer id="footer" className={isAbsolute ? 'footer_absolute' : ''}>
             <div className="footer-wrapper">
-                <div className="map_wrapper">
-                    <p>My contact</p>
-                    <p>{t('howToFind')}</p>
-                    <MapComponent />
+                <div className="footer_contact">
+                    <SocialLinks />
+                    <div className="map_wrapper">
+                        <p>{t('howToFind')}</p>
+                        <MapComponent />
+                    </div>
                 </div>
                 <Link
                     href="https://www.linkedin.com/in/katsiaryna-andrabaila-94669b23a/"
