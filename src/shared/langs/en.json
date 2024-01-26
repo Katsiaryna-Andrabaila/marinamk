@@ -43,5 +43,7 @@
         "notFound": "Unfortunately, this is only a 404 page. You may have mistyped the address, or the page has been moved to another URL",
         "mainPage": "Take me back to home page"
     },
-    "howToFind": "How to find me:"
+    "howToFind": "How to find me:",
+    "notFound": "Oooops... It looks like you are lost...",
+    "backToMain": "Back to main page"
 }
