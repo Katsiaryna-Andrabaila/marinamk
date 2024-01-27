@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import '../../../i18next';
 
 const initialContext = {
+    isModalOpen: false,
     lang: 'en',
 };
 
@@ -13,6 +14,7 @@ export const AppContext = createContext<TypeAppContext>(initialContext);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
     const [lang, setLang] = useState<string | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const { i18n } = useTranslation();
 
     useEffect(() => {
@@ -28,6 +30,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }, [lang, i18n]);
 
     const value = {
+        isModalOpen,
+        setIsModalOpen,
         lang,
         setLang,
     };
