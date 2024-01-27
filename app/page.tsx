@@ -9,8 +9,13 @@ import { Header } from 'widgets/header';
 import { MaterialsSection } from 'widgets/materialsSection';
 import { PriceSection } from 'widgets/priceSection';
 import '../i18next';
+import { useReportWebVitals } from 'next/web-vitals';
 
 function MainPage() {
+    useReportWebVitals((metric) => {
+        console.log(metric);
+    });
+
     return (
         <AppProvider>
             <Header />
