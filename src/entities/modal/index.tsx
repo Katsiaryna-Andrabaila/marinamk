@@ -1,23 +1,19 @@
 'use client';
 
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import './lib/modal.styles.scss';
 import { AppContext } from 'app/context';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { AppointmentFormType } from './lib/types';
 import { useTranslation } from 'react-i18next';
 import { EmailInput } from 'features/emailInput';
 import { TimeInputs } from 'features/timeInputs';
 import { ProcedureSelect } from 'features/procedureSelect';
+import { DateInput } from 'features/dateInput';
 
 export const Modal = () => {
     const { setIsModalOpen } = useContext(AppContext);
-    const [startDate, setStartDate] = useState<Date | null>(new Date());
     const { t } = useTranslation();
-
-    const handleClose = () => setIsModalOpen && setIsModalOpen(false);
 
     const {
         register,
@@ -29,6 +25,8 @@ export const Modal = () => {
     } = useForm<AppointmentFormType>({
         mode: 'all',
     });
+
+    const handleClose = () => setIsModalOpen && setIsModalOpen(false);
 
     const onsubmit: SubmitHandler<AppointmentFormType> = (data) => {
         console.log(data);
@@ -44,14 +42,13 @@ export const Modal = () => {
                     onSubmit={handleSubmit(onsubmit)}
                     id="appointment_form"
                 >
-                    <DatePicker
-                        wrapperClassName="datePicker"
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
-                        inline
+                    <DateInput control={control} errors={errors} />
+                    <TimeInputs
+                        watch={watch}
+                        register={register}
+                        errors={errors}
                     />
-                    <TimeInputs watch={watch} register={register} />
-                    <ProcedureSelect register={register} />
+                    <ProcedureSelect register={register} errors={errors} />
                     <EmailInput errors={errors} control={control} />
                     <input
                         type="submit"

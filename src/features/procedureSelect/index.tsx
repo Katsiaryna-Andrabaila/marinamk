@@ -1,18 +1,19 @@
 import { AppointmentFormType } from 'entities/modal/lib/types';
-import { UseFormRegister } from 'react-hook-form';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { procedures } from 'shared/const/procedures';
 
 type ProcedureSelectProps = {
     register: UseFormRegister<AppointmentFormType>;
+    errors: FieldErrors<AppointmentFormType>;
 };
 
-export const ProcedureSelect = ({ register }: ProcedureSelectProps) => {
+export const ProcedureSelect = ({ register, errors }: ProcedureSelectProps) => {
     const { t } = useTranslation();
 
     return (
         <div className="select_wrapper">
-            <p>{t('selectProcedure')}</p>
+            <p className="select_header">{t('selectProcedure')}</p>
             <select
                 {...register('procedure', {
                     required: true,
@@ -34,6 +35,11 @@ export const ProcedureSelect = ({ register }: ProcedureSelectProps) => {
                     ))}
                 </optgroup>
             </select>
+            {errors?.procedure && (
+                <p style={{ color: '#FF3F25', fontSize: '13px' }}>
+                    {t('selectProcedureError')}
+                </p>
+            )}
         </div>
     );
 };

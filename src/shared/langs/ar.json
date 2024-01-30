@@ -48,5 +48,8 @@
     "backToMain": "العودة إلى الصفحة الرئيسية",
     "selectProcedure": "حدد الإجراء",
     "enterEmail": "أدخل بريدك الإلكتروني",
-    "correctEmail": "يرجى إدخال عنوان بريد إلكتروني صالح"
+    "selectDateError": "من فضلك قم باختيار التاريخ",
+    "selectTimeError": "من فضلك اختر الوقت",
+    "selectProcedureError": "من فضلك، حدد الإجراء",
+    "correctEmailError": "يرجى إدخال عنوان بريد إلكتروني صالح"
 }

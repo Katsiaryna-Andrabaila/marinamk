@@ -48,5 +48,8 @@
     "backToMain": "Back to main page",
     "selectProcedure": "Select a procedure",
     "enterEmail": "Enter your email",
-    "correctEmail": "Enter a correct email address"
+    "selectDateError": "Please, select a date",
+    "selectTimeError": "Please, select time",
+    "selectProcedureError": "Please, select a procedure",
+    "correctEmailError": "Enter a correct email address"
 }
