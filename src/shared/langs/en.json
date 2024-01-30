@@ -45,5 +45,11 @@
     },
     "howToFind": "How to find me:",
     "notFound": "Oooops... It looks like you are lost...",
-    "backToMain": "Back to main page"
+    "backToMain": "Back to main page",
+    "selectProcedure": "Select a procedure",
+    "enterEmail": "Enter your email",
+    "selectDateError": "Please, select a date",
+    "selectTimeError": "Please, select time",
+    "selectProcedureError": "Please, select a procedure",
+    "correctEmailError": "Enter a correct email address"
 }

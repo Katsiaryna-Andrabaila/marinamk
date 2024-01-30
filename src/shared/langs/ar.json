@@ -45,5 +45,11 @@
     },
     "howToFind": "كيف تجدني:",
     "notFound": "اوووه...يبدو أنك ضائع...",
-    "backToMain": "العودة إلى الصفحة الرئيسية"
+    "backToMain": "العودة إلى الصفحة الرئيسية",
+    "selectProcedure": "حدد الإجراء",
+    "enterEmail": "أدخل بريدك الإلكتروني",
+    "selectDateError": "من فضلك قم باختيار التاريخ",
+    "selectTimeError": "من فضلك اختر الوقت",
+    "selectProcedureError": "من فضلك، حدد الإجراء",
+    "correctEmailError": "يرجى إدخال عنوان بريد إلكتروني صالح"
 }
