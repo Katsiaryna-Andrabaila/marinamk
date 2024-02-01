@@ -38,6 +38,7 @@
         "src",
         "i18next.ts",
         "i18next.d.ts",
+        "environment.d.ts",
         "app/page.tsx",
         ".next/types/**/*.ts",
         "**/*.ts",
