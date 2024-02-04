@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "appointments",
+  "info": {
+    "singularName": "appointment",
+    "pluralName": "appointments",
+    "displayName": "appointment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "windowId": {
+      "type": "string"
+    },
+    "clientEmail": {
+      "type": "string"
+    },
+    "clientName": {
+      "type": "text"
+    },
+    "procedure": {
+      "type": "text"
+    }
+  }
+}
