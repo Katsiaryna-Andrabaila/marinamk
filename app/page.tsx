@@ -10,11 +10,17 @@ import { MaterialsSection } from 'widgets/materialsSection';
 import { PriceSection } from 'widgets/priceSection';
 import '../i18next';
 import { useReportWebVitals } from 'next/web-vitals';
+import { useEffect } from 'react';
+import { IS_ADMIN } from 'shared/const/isAdmin';
 
 function MainPage() {
     useReportWebVitals((metric) => {
         console.log(metric);
     });
+
+    useEffect(() => {
+        IS_ADMIN.isAdmin = false;
+    }, []);
 
     return (
         <AppProvider>
