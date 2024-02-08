@@ -1,0 +1,80 @@
+.slots_form {
+    display: grid;
+    grid-template-areas:
+        'date time'
+        'submit submit';
+    gap: 1rem;
+    width: 70%;
+    margin: 2rem auto;
+
+    .react-datepicker {
+        grid-area: date;
+        width: 80%;
+    }
+
+    .react-datepicker__header {
+        background-color: var(--light-green);
+    }
+
+    .react-datepicker__month-container {
+        float: unset;
+    }
+
+    .react-datepicker__day--keyboard-selected {
+        background-color: var(--grey-4);
+    }
+
+    .react-datepicker__day--selected {
+        background-color: var(--main-green);
+    }
+
+    .time_wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+
+        .time_item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 8px;
+            width: 100%;
+            label {
+                cursor: pointer;
+                width: 100%;
+                height: 2rem;
+                border-radius: 5px;
+                border: 1px solid var(--main-green);
+                padding: 8px 10px;
+                font-size: 12px;
+                font-weight: 600;
+                text-align: center;
+            }
+
+            input[type='radio'] {
+                width: 1px;
+                height: 1px;
+            }
+            input[type='radio'] + span::before {
+                border-radius: 5px;
+            }
+        }
+    }
+
+    .add_button {
+        grid-area: submit;
+        justify-self: center;
+        width: 100%;
+        height: 2.5rem;
+        background-color: var(--main-green);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+        &:disabled {
+            background-color: var(--grey-2);
+            cursor: default;
+        }
+    }
+}

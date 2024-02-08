@@ -22,7 +22,7 @@ export const AdminNameInput = ({ control, errors }: AdminNameInputProps) => {
                     <input
                         {...field}
                         type="text"
-                        placeholder="username"
+                        placeholder="пользователь"
                         autoComplete="off"
                         className={
                             errors.username

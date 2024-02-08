@@ -25,7 +25,7 @@ export const AdminPasswordInput = ({
                     <input
                         {...field}
                         type="text"
-                        placeholder="password"
+                        placeholder="пароль"
                         autoComplete="off"
                         className={
                             errors.password

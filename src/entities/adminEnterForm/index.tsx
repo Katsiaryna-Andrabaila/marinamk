@@ -11,7 +11,7 @@ import { IS_ADMIN } from 'shared/const/isAdmin';
 import './lib/adminEnterForm.styles.scss';
 
 export const AdminEnterForm = () => {
-    const { isAdmin, setIsAdmin } = useContext(AppContext);
+    const { setIsAdmin } = useContext(AppContext);
     const router = useRouter();
 
     const {
@@ -22,9 +22,7 @@ export const AdminEnterForm = () => {
         mode: 'all',
     });
 
-    const onsubmit: SubmitHandler<AdminFormType> = (data) => {
-        console.log(data, isValid, isAdmin);
-
+    const onsubmit: SubmitHandler<AdminFormType> = () => {
         setIsAdmin && setIsAdmin(true);
         IS_ADMIN.isAdmin = true;
         router.replace('/admin');
@@ -41,7 +39,7 @@ export const AdminEnterForm = () => {
                 <AdminPasswordInput control={control} errors={errors} />
                 <input
                     type="submit"
-                    value="Enter"
+                    value="Войти"
                     disabled={!isValid}
                     className="submit_button"
                 />
