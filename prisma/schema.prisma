@@ -12,16 +12,16 @@ model User {
   name     String?
   email    String  @unique
   password String
-  posts    Post[]
+  //posts    Post[]
 }
 
 model Post {
   id        String   @id @default(uuid())
   date      DateTime
-  author    User     @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  authorId  String
+  //author    User     @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  //authorId  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([id, authorId])
+  @@unique([id])
 }
