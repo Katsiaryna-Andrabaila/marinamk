@@ -47,9 +47,11 @@
     "notFound": "Oooops... It looks like you are lost...",
     "backToMain": "Back to main page",
     "selectProcedure": "Select a procedure",
+    "enterName": "Enter your name",
     "enterEmail": "Enter your email",
     "selectDateError": "Please, select a date",
     "selectTimeError": "Please, select time",
     "selectProcedureError": "Please, select a procedure",
-    "correctEmailError": "Enter a correct email address"
+    "correctEmailError": "Enter a correct email address",
+    "correctNameError": "Enter correct name"
 }

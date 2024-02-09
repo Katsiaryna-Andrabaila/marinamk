@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './lib/modal.styles.scss';
 import { AppContext } from 'app/context';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -10,10 +10,14 @@ import { EmailInput } from 'features/emailInput';
 import { TimeInputs } from 'features/timeInputs';
 import { ProcedureSelect } from 'features/procedureSelect';
 import { DateInput } from 'features/dateInput';
+import { Post } from '@prisma/client';
+import { NameInput } from 'features/nameInput';
 
 export const Modal = () => {
     const { setIsModalOpen } = useContext(AppContext);
     const { t } = useTranslation();
+    const [data, setData] = useState<Post[] | null>(null);
+    const [isLoading, setLoading] = useState(true);
 
     const {
         register,
@@ -23,15 +27,52 @@ export const Modal = () => {
         control,
         formState: { errors, isValid },
     } = useForm<AppointmentFormType>({
-        mode: 'all',
+        mode: 'onBlur',
     });
+
+    useEffect(() => {
+        fetch('/api/post')
+            .then((res) => res.json())
+            .then((data) => {
+                setData(data);
+                setLoading(false);
+            });
+    }, []);
 
     const handleClose = () => setIsModalOpen && setIsModalOpen(false);
 
-    const onsubmit: SubmitHandler<AppointmentFormType> = (data) => {
-        console.log(data);
+    const onsubmit: SubmitHandler<AppointmentFormType> = async (submitData) => {
+        console.log(submitData);
+        const { date, time, procedure, clientName, clientEmail } = submitData;
+        const targetSlot = data?.find(
+            (el) =>
+                new Date(el.date).getTime() === date.getDate() && el.id === time
+        );
+
+        const body = {
+            id: time,
+            date,
+            time: targetSlot?.time,
+            procedure,
+            clientName,
+            clientEmail,
+            isAvailable: false,
+        };
+
+        try {
+            await fetch('api/post', {
+                method: 'PUT',
+                body: JSON.stringify(body),
+            });
+        } catch (e) {
+            console.error(e);
+        }
+
         reset();
     };
+
+    if (isLoading) return <p>Loading...</p>;
+    if (!data) return <p>No data</p>;
 
     return (
         <div className="shadow" onClick={handleClose}>
@@ -42,13 +83,15 @@ export const Modal = () => {
                     onSubmit={handleSubmit(onsubmit)}
                     id="appointment_form"
                 >
-                    <DateInput control={control} errors={errors} />
+                    <DateInput control={control} errors={errors} slots={data} />
                     <TimeInputs
                         watch={watch}
                         register={register}
                         errors={errors}
+                        slots={data}
                     />
                     <ProcedureSelect register={register} errors={errors} />
+                    <NameInput errors={errors} control={control} />
                     <EmailInput errors={errors} control={control} />
                     <input
                         type="submit"

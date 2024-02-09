@@ -2,44 +2,43 @@ import { AppointmentFormType } from 'entities/modal/lib/types';
 import { Control, Controller, FieldErrors } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-type EmailInputProps = {
+type NameInputProps = {
     errors: FieldErrors<AppointmentFormType>;
     control: Control<AppointmentFormType, string>;
 };
 
-export const EmailInput = ({ errors, control }: EmailInputProps) => {
+export const NameInput = ({ errors, control }: NameInputProps) => {
     const { t } = useTranslation();
 
     return (
-        <div className="email_input_wrapper">
+        <div className="name_input_wrapper">
             <Controller
-                name="clientEmail"
+                name="clientName"
                 control={control}
                 defaultValue={''}
                 rules={{
-                    required: true,
-                    pattern: {
-                        value: /^(?!.*\.{2})[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]{2,}(?:\.[a-z]{2,})+$/i,
-                        message: t('correctEmailError'),
-                    },
+                    pattern: /^[\w\s-а-яА-ЯёЁ]+$/i,
+                    minLength: 2,
+                    maxLength: 50,
                 }}
                 render={({ field }) => (
                     <input
                         {...field}
-                        type="email"
-                        placeholder={t('enterEmail')}
+                        type="text"
+                        placeholder={t('enterName')}
                         autoComplete="off"
                         className={
-                            errors.clientEmail
-                                ? 'email_input email_error'
-                                : 'email_input'
+                            errors.clientName
+                                ? 'name_input name_error'
+                                : 'name_input'
                         }
                     />
                 )}
             />
-            {errors?.clientEmail && (
+            {(errors?.clientName ||
+                errors?.clientName?.type === 'minLength') && (
                 <p style={{ color: '#FF3F25', fontSize: '13px' }}>
-                    {t('correctEmailError')}
+                    {t('correctNameError')}
                 </p>
             )}
         </div>
