@@ -35,15 +35,6 @@ export const AddSlots = () => {
                         isAvailable: true,
                     }),
                 });
-                /* const response = await fetch('api/post');
-            const respData = await response.json();
-            console.log(respData); */
-                /* await fetch('api/post', {
-                method: 'DELETE',
-                body: JSON.stringify({
-                    id: '6ca67975-488f-4f9e-9533-017c623ea0f6',
-                }),
-            }); */
             } catch (e) {
                 console.error(e);
             }

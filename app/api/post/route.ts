@@ -41,6 +41,12 @@ export async function POST(req: NextRequest) {
         });
     }
 
+    if (new Date(body.date) < new Date()) {
+        return new Response('Unable to add slot before today', {
+            status: 400,
+        });
+    }
+
     try {
         const post = await prisma.post.create({
             data,
@@ -109,7 +115,7 @@ export async function DELETE(req: NextRequest) {
                 id: data.id,
             },
         });
-        return new Response('No content', {
+        return new Response(null, {
             status: 204,
         });
     } catch (e) {
