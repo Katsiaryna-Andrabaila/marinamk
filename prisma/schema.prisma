@@ -16,12 +16,17 @@ model User {
 }
 
 model Post {
-  id        String   @id @default(uuid())
-  date      DateTime
+  id          String   @id @default(uuid())
+  date        DateTime
+  time        String
+  clientName  String?
+  clientEmail String?
+  procedure   String?
+  isAvailable Boolean
   //author    User     @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   //authorId  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@unique([id])
 }

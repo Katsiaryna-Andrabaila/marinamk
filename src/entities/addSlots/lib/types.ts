@@ -1,4 +1,5 @@
 export type AddSlotFormType = {
     date: Date;
-    time: string;
+    time: string[];
+    newTime: string;
 };
