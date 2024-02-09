@@ -20,7 +20,7 @@ export const TimeInputs = ({
     const { t } = useTranslation();
     const date = watch('date');
     const radio = watch('time');
-    const [time, setTime] = useState<string[]>([]);
+    const [time, setTime] = useState([{ id: '', time: '' }]);
 
     const checkedStyle = {
         color: 'white',
@@ -33,7 +33,7 @@ export const TimeInputs = ({
                 .filter(
                     (el: Post) => new Date(el.date).getTime() === date.getTime()
                 )
-                .map((el: Post) => el.time);
+                .map((el: Post) => ({ id: el.id, time: el.time }));
 
             setTime(targetTime);
         }
@@ -42,17 +42,17 @@ export const TimeInputs = ({
     return (
         <div className="time_wrapper">
             {time.length
-                ? time.map((el: string) => (
-                      <div className="time_item" key={el}>
-                          <label style={radio === el ? checkedStyle : {}}>
+                ? time.map((el) => (
+                      <div className="time_item" key={el.id}>
+                          <label style={radio === el.id ? checkedStyle : {}}>
                               <input
                                   type="radio"
-                                  value={el}
+                                  value={el.id}
                                   {...register('time', {
                                       required: true,
                                   })}
                               />
-                              {el}
+                              {el.time}
                           </label>
                       </div>
                   ))

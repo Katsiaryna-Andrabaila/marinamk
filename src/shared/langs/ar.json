@@ -47,9 +47,11 @@
     "notFound": "اوووه...يبدو أنك ضائع...",
     "backToMain": "العودة إلى الصفحة الرئيسية",
     "selectProcedure": "حدد الإجراء",
+    "enterName": "أدخل أسمك",
     "enterEmail": "أدخل بريدك الإلكتروني",
     "selectDateError": "من فضلك قم باختيار التاريخ",
     "selectTimeError": "من فضلك اختر الوقت",
     "selectProcedureError": "من فضلك، حدد الإجراء",
-    "correctEmailError": "يرجى إدخال عنوان بريد إلكتروني صالح"
+    "correctEmailError": "يرجى إدخال عنوان بريد إلكتروني صالح",
+    "correctNameError": "أدخل الاسم الصحيح"
 }

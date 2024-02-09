@@ -11,6 +11,7 @@ import { TimeInputs } from 'features/timeInputs';
 import { ProcedureSelect } from 'features/procedureSelect';
 import { DateInput } from 'features/dateInput';
 import { Post } from '@prisma/client';
+import { NameInput } from 'features/nameInput';
 
 export const Modal = () => {
     const { setIsModalOpen } = useContext(AppContext);
@@ -26,7 +27,7 @@ export const Modal = () => {
         control,
         formState: { errors, isValid },
     } = useForm<AppointmentFormType>({
-        mode: 'all',
+        mode: 'onBlur',
     });
 
     useEffect(() => {
@@ -40,8 +41,33 @@ export const Modal = () => {
 
     const handleClose = () => setIsModalOpen && setIsModalOpen(false);
 
-    const onsubmit: SubmitHandler<AppointmentFormType> = (data) => {
-        console.log(data);
+    const onsubmit: SubmitHandler<AppointmentFormType> = async (submitData) => {
+        console.log(submitData);
+        const { date, time, procedure, clientName, clientEmail } = submitData;
+        const targetSlot = data?.find(
+            (el) =>
+                new Date(el.date).getTime() === date.getDate() && el.id === time
+        );
+
+        const body = {
+            id: time,
+            date,
+            time: targetSlot?.time,
+            procedure,
+            clientName,
+            clientEmail,
+            isAvailable: false,
+        };
+
+        try {
+            await fetch('api/post', {
+                method: 'PUT',
+                body: JSON.stringify(body),
+            });
+        } catch (e) {
+            console.error(e);
+        }
+
         reset();
     };
 
@@ -65,6 +91,7 @@ export const Modal = () => {
                         slots={data}
                     />
                     <ProcedureSelect register={register} errors={errors} />
+                    <NameInput errors={errors} control={control} />
                     <EmailInput errors={errors} control={control} />
                     <input
                         type="submit"
