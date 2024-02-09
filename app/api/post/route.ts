@@ -1,88 +1,123 @@
-import { NextApiRequestWithUserId } from 'shared/apiTypes';
-import authGuard from 'shared/apiUtils/authGuard';
+//import { NextApiRequestWithUserId } from 'shared/apiTypes';
+//import authGuard from 'shared/apiUtils/authGuard';
 import checkFields from 'shared/apiUtils/checkFields';
 import prisma from 'shared/apiUtils/prisma';
 import { Post } from '@prisma/client';
-import { NextApiResponse } from 'next';
-import { createRouter } from 'next-connect';
+//import { NextApiRequest, NextApiResponse } from 'next';
+//import { createRouter } from 'next-connect';
+import { NextRequest } from 'next/server';
 
-const postsHandler = createRouter<NextApiRequestWithUserId, NextApiResponse>();
+//const postsHandler = createRouter<NextApiRequestWithUserId, NextApiResponse>();
 
-postsHandler.post(async (req, res) => {
-    // на `authorId` не содержится в теле запроса
-    // он хранится в самом запросе
-    const data: Pick<Post, 'date' | 'authorId'> = JSON.parse(req.body);
-
-    if (!checkFields(data, ['date'])) {
-        res.status(400).json({
-            message: 'Some required fields are missing',
+export async function GET() {
+    try {
+        const posts = JSON.stringify(await prisma.post.findMany());
+        return new Response(posts, {
+            status: 200,
+        });
+    } catch (e) {
+        console.error(e);
+        return new Response('Internal server error', {
+            status: 500,
         });
     }
+}
 
-    // дополняем данные полем `authorId`
-    data.authorId = req.userId;
+export async function POST(req: NextRequest) {
+    const body = await req.json();
+    const data: Pick<
+        Post,
+        | 'date'
+        | 'time'
+        | 'clientName'
+        | 'clientEmail'
+        | 'procedure'
+        | 'isAvailable'
+    > = body;
+
+    if (!checkFields(data, ['date', 'time', 'isAvailable'])) {
+        return new Response('Some required fields are missing', {
+            status: 400,
+        });
+    }
 
     try {
         const post = await prisma.post.create({
             data,
         });
-        res.status(200).json(post);
+        return new Response(JSON.stringify(post), {
+            status: 201,
+        });
     } catch (e) {
         console.error(e);
-        res.status(500).json({ message: 'Post create error' });
+        return new Response('Post create error', {
+            status: 500,
+        });
     }
-});
+}
 
-postsHandler.put(async (req, res) => {
-    const data: Pick<Post, 'date'> & {
-        postId: string;
-    } = JSON.parse(req.body);
+export async function PUT(req: NextRequest) {
+    const body: Post = await req.json();
+    const data: Post = body;
+    const { id, date, time, clientName, clientEmail, procedure, isAvailable } =
+        data;
 
-    if (!checkFields(data, ['date'])) {
-        res.status(400).json({ message: 'Some required fields are missing' });
+    if (!checkFields(data, ['id'])) {
+        return new Response('Post ID is missing', {
+            status: 400,
+        });
     }
 
     try {
         const post = await prisma.post.update({
-            // гарантия того, что пользователь обновляем принадлежащий ему пост
             where: {
-                id_authorId: { id: data.postId, authorId: req.userId },
+                id,
             },
             data: {
-                date: data.date,
+                date,
+                time,
+                clientName,
+                clientEmail,
+                procedure,
+                isAvailable,
             },
         });
-        res.status(200).json(post);
+        return new Response(JSON.stringify(post), {
+            status: 200,
+        });
     } catch (e) {
         console.error(e);
-        res.status(500).json({ message: 'Update post error' });
+        return new Response('Update post error', {
+            status: 500,
+        });
     }
-});
+}
 
-postsHandler.delete(async (req, res) => {
-    const id = req.query.id as string;
+export async function DELETE(req: NextRequest) {
+    const body = await req.json();
+    const data: Pick<Post, 'id'> = body;
 
-    if (!id) {
-        return res.status(400).json({
-            message: 'Post ID is missing',
+    if (!checkFields(data, ['id'])) {
+        return new Response('Post ID is missing', {
+            status: 400,
         });
     }
 
     try {
-        const post = await prisma.post.delete({
-            // гарантия того, что пользователь удаляет принадлежащий ему пост
+        await prisma.post.delete({
             where: {
-                id_authorId: {
-                    id,
-                    authorId: req.userId,
-                },
+                id: data.id,
             },
         });
-        res.status(200).json(post);
+        return new Response('No content', {
+            status: 204,
+        });
     } catch (e) {
         console.error(e);
-        res.status(500).json({ message: 'Post remove error' });
+        return new Response('Post remove error', {
+            status: 500,
+        });
     }
-});
+}
 
-export default authGuard(postsHandler);
+//export default authGuard(postsHandler);

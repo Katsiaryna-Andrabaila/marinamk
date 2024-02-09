@@ -21,6 +21,34 @@ export const AddSlots = () => {
 
     const onsubmit: SubmitHandler<AddSlotFormType> = (data) => {
         console.log(data);
+        const { date, time } = data;
+        time.forEach(async (el) => {
+            try {
+                await fetch('api/post', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        date,
+                        time: el,
+                        clientName: '',
+                        clientEmail: '',
+                        procedure: '',
+                        isAvailable: true,
+                    }),
+                });
+                /* const response = await fetch('api/post');
+            const respData = await response.json();
+            console.log(respData); */
+                /* await fetch('api/post', {
+                method: 'DELETE',
+                body: JSON.stringify({
+                    id: '6ca67975-488f-4f9e-9533-017c623ea0f6',
+                }),
+            }); */
+            } catch (e) {
+                console.error(e);
+            }
+        });
+
         reset();
     };
 
@@ -46,11 +74,11 @@ export const AddSlots = () => {
                         />
                     )}
                 />
-                {errors?.date && (
+                {/* {errors?.date && (
                     <p style={{ color: '#FF3F25', fontSize: '13px' }}>
                         Что-то пошло не так...
                     </p>
-                )}
+                )} */}
             </>
             <AddTimeInputs watch={watch} register={register} errors={errors} />
             <input

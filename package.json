@@ -8,7 +8,7 @@
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
     },
     "dependencies": {
-        "@prisma/client": "^5.9.0",
+        "@prisma/client": "^5.9.1",
         "argon2": "^0.31.2",
         "cookie": "^0.6.0",
         "date-fns": "^3.3.1",
@@ -43,7 +43,7 @@
         "eslint-config-next": "^14.1.0",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.4",
-        "prisma": "^5.9.0",
+        "prisma": "^5.9.1",
         "sass": "^1.69.7",
         "typescript": "^5.2.2"
     }

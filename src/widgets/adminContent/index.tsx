@@ -6,7 +6,7 @@ import { AddSlots } from 'entities/addSlots';
 import { Schedule } from 'entities/schedule';
 
 export const AdminContent = () => {
-    const [activeTab, setActiveTab] = useState<'add' | 'watch'>('watch');
+    const [activeTab, setActiveTab] = useState<'add' | 'watch'>('add');
 
     const handleClick = (tab: 'add' | 'watch') => setActiveTab(tab);
 
