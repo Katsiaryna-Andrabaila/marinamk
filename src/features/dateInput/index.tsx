@@ -10,16 +10,20 @@ registerLocale('ru', ru);
 import en from 'date-fns/locale/en-GB';
 registerLocale('en', en);
 import ar from 'date-fns/locale/ar';
+import { Post } from '@prisma/client';
 registerLocale('ar', ar);
 
 type DateInputProps = {
     control: Control<AppointmentFormType, Date>;
     errors: FieldErrors<AppointmentFormType>;
+    slots: Post[];
 };
 
-export const DateInput = ({ control, errors }: DateInputProps) => {
+export const DateInput = ({ control, errors, slots }: DateInputProps) => {
     const { t } = useTranslation();
     const { lang } = useContext(AppContext);
+
+    const availableDates = [...slots].map((el) => new Date(el.date));
 
     const getLocale = () => {
         switch (lang) {
@@ -45,6 +49,7 @@ export const DateInput = ({ control, errors }: DateInputProps) => {
                         locale={getLocale()}
                         wrapperClassName="datePicker"
                         selected={field.value}
+                        includeDates={availableDates}
                         inline
                         onChange={(date) => field.onChange(date)}
                     />
