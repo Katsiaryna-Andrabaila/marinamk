@@ -12,6 +12,7 @@ import '../i18next';
 import { useReportWebVitals } from 'next/web-vitals';
 import { useEffect, useState } from 'react';
 import { IS_ADMIN } from 'shared/const/isAdmin';
+import { Spinner } from 'features/spinner';
 
 function MainPage() {
     const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +41,7 @@ function MainPage() {
                     <Footer />
                 </>
             ) : (
-                <>Loading...</>
+                <Spinner />
             )}
         </AppProvider>
     );
