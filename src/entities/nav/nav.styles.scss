@@ -1,7 +1,7 @@
 nav {
     display: flex;
     gap: 2rem;
-    margin-left: 20rem;
+    margin-left: 20%;
     li {
         list-style-type: none;
         a {
@@ -12,5 +12,17 @@ nav {
         &.active {
             color: #5e84f9;
         }
+    }
+}
+
+@media (max-width: 1150px) {
+    nav {
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 850px) {
+    nav {
+        margin-left: 5%;
     }
 }
