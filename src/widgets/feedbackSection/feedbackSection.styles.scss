@@ -14,9 +14,9 @@
         display: flex;
         gap: 2rem;
         flex-wrap: nowrap;
-        max-width: 1440px;
+        width: 90%;
         overflow-x: scroll;
-        padding: 2rem;
+        padding: 2rem 0;
         margin: auto;
 
         .feedback_card {
@@ -60,5 +60,19 @@
         border-radius: 10px;
         background: linear-gradient(180deg, #8ce2fa, var(--main-pink));
         cursor: pointer;
+    }
+}
+
+@media (max-width: 767px) {
+    .feedback-section {
+        .feedback_wrapper {
+            gap: 1rem;
+            .feedback_card {
+                min-width: 11rem;
+                .feedback_text {
+                    font-size: 14px;
+                }
+            }
+        }
     }
 }

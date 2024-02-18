@@ -8,6 +8,7 @@
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
     },
     "dependencies": {
+        "@buildinams/use-match-media": "^0.2.1",
         "@prisma/client": "^5.9.1",
         "argon2": "^0.31.2",
         "cookie": "^0.6.0",
@@ -23,8 +24,10 @@
         "react-dom": "^18.2.0",
         "react-hook-form": "^7.49.3",
         "react-i18next": "^13.5.0",
+        "react-loader-spinner": "^6.1.6",
         "react-router-dom": "^6.20.1",
         "react-scroll": "^1.9.0",
+        "sharp": "^0.33.2",
         "swr": "^2.2.4"
     },
     "devDependencies": {

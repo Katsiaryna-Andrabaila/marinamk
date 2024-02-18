@@ -14,12 +14,14 @@ header {
         height: auto;
         margin: auto;
         padding: 1rem 0;
-        width: 1440px;
+        width: 90%;
     }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1150px) {
     header {
-        max-width: 1240px;
+        .header_wrapper {
+            width: 95%;
+        }
     }
 }

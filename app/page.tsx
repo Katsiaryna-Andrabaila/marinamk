@@ -10,29 +10,39 @@ import { MaterialsSection } from 'widgets/materialsSection';
 import { PriceSection } from 'widgets/priceSection';
 import '../i18next';
 import { useReportWebVitals } from 'next/web-vitals';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { IS_ADMIN } from 'shared/const/isAdmin';
+import { Spinner } from 'features/spinner';
 
 function MainPage() {
+    const [isLoading, setIsLoading] = useState(true);
+
     useReportWebVitals((metric) => {
         console.log(metric);
     });
 
     useEffect(() => {
         IS_ADMIN.isAdmin = false;
+        setIsLoading(false);
     }, []);
 
     return (
         <AppProvider>
-            <Header />
-            <main>
-                <EnterSection />
-                <AboutSection />
-                <PriceSection />
-                <MaterialsSection />
-                <FeedbackSection />
-            </main>
-            <Footer />
+            {!isLoading ? (
+                <>
+                    <Header />
+                    <main>
+                        <EnterSection />
+                        <AboutSection />
+                        <PriceSection />
+                        <MaterialsSection />
+                        <FeedbackSection />
+                    </main>
+                    <Footer />
+                </>
+            ) : (
+                <Spinner />
+            )}
         </AppProvider>
     );
 }

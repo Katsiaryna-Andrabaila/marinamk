@@ -21,8 +21,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     const { i18n } = useTranslation();
 
     useEffect(() => {
-        const userLang = localStorage.getItem('marinamk-lang');
-        setLang(userLang ?? 'en');
+        typeof window !== 'undefined' &&
+            setLang(localStorage.getItem('marinamk-lang'));
+
+        setIsAdmin(IS_ADMIN.isAdmin);
     }, []);
 
     useEffect(() => {
@@ -31,10 +33,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
             localStorage.setItem('marinamk-lang', lang);
         }
     }, [lang, i18n]);
-
-    useEffect(() => {
-        setIsAdmin(IS_ADMIN.isAdmin);
-    }, []);
 
     const value = {
         isModalOpen,
