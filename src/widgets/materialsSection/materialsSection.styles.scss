@@ -10,12 +10,16 @@
         margin-bottom: 2rem;
         text-align: center;
     }
+    p {
+        width: 90%;
+        margin: auto;
+    }
 
     .materials_images {
         display: flex;
         justify-content: space-between;
         max-height: 10rem;
-        max-width: 1440px;
+        width: 90%;
         margin: 2rem auto 0;
         a {
             position: relative;
@@ -30,6 +34,19 @@
             }
             .vogue_img {
                 width: 60%;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .materials-section {
+        .materials_images {
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-height: unset;
+            a {
+                width: 20%;
             }
         }
     }
