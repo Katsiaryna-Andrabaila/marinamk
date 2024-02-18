@@ -53,3 +53,37 @@
         }
     }
 }
+
+@media (max-width: 1440px) {
+    .price-section {
+        .service_prices {
+            width: 70%;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .price-section {
+        .service_prices {
+            width: 90%;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .price-section {
+        .service_prices {
+            .service_prices_unit {
+                .service_price {
+                    gap: 1rem;
+                    span:first-child {
+                        text-align: left;
+                    }
+                    span:last-child {
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+}
