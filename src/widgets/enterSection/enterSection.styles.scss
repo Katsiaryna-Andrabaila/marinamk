@@ -35,8 +35,50 @@
             inset 10px 10px 15px rgba(70, 70, 70, 0.12);
     }
 }
+
 @media (max-width: 1440px) {
     .enter-section {
         height: 90vh;
+        .appointment-btn {
+            width: 25vw;
+            height: 25vw;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .enter-section {
+        .appointment-btn {
+            width: 30vw;
+            height: 30vw;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .enter-section {
+        .appointment-btn {
+            right: 5%;
+            width: 40vw;
+            height: 40vw;
+        }
+    }
+}
+
+@media (max-width: 540px) {
+    .enter-section {
+        .appointment-btn {
+            width: 50vw;
+            height: 50vw;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .enter-section {
+        .appointment-btn {
+            width: 65vw;
+            height: 65vw;
+        }
     }
 }
