@@ -3,9 +3,10 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import './lib/addSlots.styles.scss';
-import { AddSlotFormType, SlotType } from './lib/types';
+import { AddSlotFormType } from './lib/types';
 import 'react-datepicker/dist/react-datepicker.css';
 import { AddTimeInputs } from 'features/addTimeInput';
+import { Post } from '@prisma/client';
 
 export const AddSlots = () => {
     const {
@@ -44,7 +45,7 @@ export const AddSlots = () => {
     };
 
     const handleCleanClick = async () => {
-        const data: Promise<SlotType[]> = fetch('/api/post').then((res) =>
+        const data: Promise<Post[]> = fetch('/api/post').then((res) =>
             res.json()
         );
 

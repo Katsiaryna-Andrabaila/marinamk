@@ -2,25 +2,21 @@ import { Post } from '@prisma/client';
 import { Dispatch, SetStateAction } from 'react';
 
 type EditProps = {
-    id: string;
-    data: Post[];
-    setData: Dispatch<SetStateAction<Post[] | null>>;
+    slot: Post;
+    setIsEditModalOpen: Dispatch<SetStateAction<boolean>>;
+    setActiveSlot: Dispatch<SetStateAction<Post | undefined>>;
     color?: string;
 };
 
-export const Edit = ({ id, data, setData, color = '#000000' }: EditProps) => {
+export const Edit = ({
+    slot,
+    setIsEditModalOpen,
+    setActiveSlot,
+    color = '#000000',
+}: EditProps) => {
     const handleClick = async () => {
-        try {
-            await fetch('api/post', {
-                method: 'PUT',
-                body: JSON.stringify({
-                    id,
-                }),
-            });
-            setData(data.filter((el) => el.id !== id));
-        } catch (e) {
-            console.error(e);
-        }
+        setIsEditModalOpen(true);
+        setActiveSlot(slot);
     };
 
     return (

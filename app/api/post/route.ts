@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
     }
 }
 
-export async function PUT(req: NextRequest) {
+export async function PATCH(req: NextRequest) {
     const body: Post = await req.json();
     const data: Post = body;
     const { id, date, time, clientName, clientEmail, procedure, isAvailable } =
