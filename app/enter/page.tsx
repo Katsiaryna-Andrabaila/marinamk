@@ -2,17 +2,21 @@
 
 import { AppProvider } from 'app/context';
 import { AdminEnterForm } from 'entities/adminEnterForm';
-import { useEffect } from 'react';
+import { Spinner } from 'features/spinner';
+import { useEffect, useState } from 'react';
 import { IS_ADMIN } from 'shared/const/isAdmin';
 
 function EnterPage() {
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
         IS_ADMIN.isAdmin = false;
+        setIsLoading(false);
     }, []);
 
     return (
         <AppProvider>
-            <AdminEnterForm />
+            {isLoading ? <Spinner /> : <AdminEnterForm />}
         </AppProvider>
     );
 }
