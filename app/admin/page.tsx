@@ -16,8 +16,8 @@ function AdminPage() {
     useEffect(() => {
         if (!IS_ADMIN.isAdmin) {
             router.replace('/enter');
-            setIsLoading(false);
         }
+        setIsLoading(false);
     }, []);
 
     return (
