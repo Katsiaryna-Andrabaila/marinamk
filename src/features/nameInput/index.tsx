@@ -1,4 +1,4 @@
-import { AppointmentFormType } from 'entities/modal/lib/types';
+import { AppointmentFormType } from '../../entities/modal/lib/types';
 import { Control, Controller, FieldErrors } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 

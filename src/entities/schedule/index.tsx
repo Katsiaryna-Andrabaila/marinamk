@@ -4,7 +4,7 @@ import './lib/schedule.styles.scss';
 import { getSlotDate } from '../../shared/utils/getSlotDate';
 import { Edit } from 'shared/ui/Edit';
 import { Delete } from 'shared/ui/Delete';
-import { EditSlotModal } from 'entities/editSlotModal';
+import { EditSlotModal } from '../editSlotModal';
 import { RU_NAMES } from 'shared/const/procedureRuNames';
 
 export const Schedule = () => {

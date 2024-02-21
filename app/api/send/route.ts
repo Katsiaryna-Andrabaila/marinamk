@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
-import { EmailMessage } from 'entities/emailMessage';
+import { EmailMessage } from '../../../src/entities/emailMessage';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

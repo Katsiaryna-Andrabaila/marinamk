@@ -1,4 +1,4 @@
-import { Nav } from 'entities/nav';
+import { Nav } from '../../entities/nav';
 import { useState } from 'react';
 import './burger.styles.scss';
 

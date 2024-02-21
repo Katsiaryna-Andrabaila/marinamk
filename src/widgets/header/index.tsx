@@ -1,5 +1,5 @@
 import { Langs } from 'features/langs';
-import { Nav } from 'entities/nav';
+import { Nav } from '../../entities/nav';
 import { Logo } from 'shared/logo';
 import './header.styles.scss';
 import useMatchMedia from '@buildinams/use-match-media';

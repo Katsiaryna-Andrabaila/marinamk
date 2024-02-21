@@ -1,6 +1,6 @@
 import { Control, Controller, FieldErrors } from 'react-hook-form';
 import DatePicker, { registerLocale } from 'react-datepicker';
-import { AppointmentFormType } from 'entities/modal/lib/types';
+import { AppointmentFormType } from '../../entities/modal/lib/types';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useTranslation } from 'react-i18next';
 import { useContext } from 'react';

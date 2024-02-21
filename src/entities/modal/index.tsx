@@ -34,7 +34,9 @@ export const Modal = () => {
         fetch('/api/post')
             .then((res) => res.json())
             .then((data) => {
-                setData(data);
+                setData(
+                    data.filter((el: Post) => new Date(el.date) >= new Date())
+                );
                 setLoading(false);
             });
     }, []);
