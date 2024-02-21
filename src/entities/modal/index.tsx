@@ -68,6 +68,20 @@ export const Modal = () => {
             console.error(e);
         }
 
+        await fetch('/api/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+
+            body: JSON.stringify({
+                name: clientName,
+                email: clientEmail,
+                date,
+                time,
+            }),
+        });
+
         reset();
     };
 
