@@ -1,4 +1,4 @@
-import { EditFormData } from 'entities/editSlotModal/lib/types';
+import { EditFormData } from '../../entities/editSlotModal/lib/types';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { procedures } from 'shared/const/procedures';

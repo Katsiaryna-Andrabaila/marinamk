@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import './adminContent.styles.scss';
-import { AddSlots } from 'entities/addSlots';
-import { Schedule } from 'entities/schedule';
+import { AddSlots } from '../../entities/addSlots';
+import { Schedule } from '../../entities/schedule';
 
 export const AdminContent = () => {
     const [activeTab, setActiveTab] = useState<'add' | 'watch'>('watch');

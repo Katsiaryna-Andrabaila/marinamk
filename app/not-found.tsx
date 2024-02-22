@@ -1,6 +1,6 @@
 'use client';
 
-import { NotFound } from 'entities/notFound';
+import { NotFound } from '../src/entities/notFound';
 import '../i18next';
 import { Footer } from 'widgets/footer';
 import { AppProvider } from 'app/context';

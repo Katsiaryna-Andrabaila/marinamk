@@ -1,4 +1,4 @@
-import { AdminFormType } from 'entities/adminEnterForm/lib/types';
+import { AdminFormType } from '../../entities/adminEnterForm/lib/types';
 import { Control, Controller, FieldErrors } from 'react-hook-form';
 
 type AdminPasswordInputProps = {

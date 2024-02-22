@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
-import { NextRequest, NextResponse } from 'next/server';
-import { EmailMessage } from 'entities/emailMessage';
+import { NextRequest } from 'next/server';
+import { EmailMessage } from '../../../src/entities/emailMessage';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -15,8 +15,19 @@ export async function POST(req: NextRequest) {
             react: EmailMessage({ name, date, time }),
         });
 
-        return NextResponse.json(data);
+        if (data.data) {
+            return new Response(JSON.stringify(data), {
+                status: 200,
+            });
+        } else {
+            return new Response(JSON.stringify(data), {
+                status: 403,
+            });
+        }
     } catch (error) {
-        return NextResponse.json({ error });
+        console.error(error);
+        return new Response('Send email error', {
+            status: 500,
+        });
     }
 }

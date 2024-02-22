@@ -4,7 +4,8 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { EditFormData } from './lib/types';
 import { getSlotDate } from 'shared/utils/getSlotDate';
 import { EditProcedureSelect } from 'features/editProcedureSelect';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
+import { AppContext } from 'app/context';
 
 type EditSlotModalProps = {
     slot: Post;
@@ -17,6 +18,7 @@ export const EditSlotModal = ({
     setIsEditModalOpen,
     setActiveSlot,
 }: EditSlotModalProps) => {
+    const { lang } = useContext(AppContext);
     const {
         register,
         handleSubmit,
@@ -56,7 +58,7 @@ export const EditSlotModal = ({
                 id="edit_slot_form"
                 onClick={(e) => e.stopPropagation()}
             >
-                <h2>{`${getSlotDate(slot.date)} ${slot.time}`}</h2>
+                <h2>{`${getSlotDate(slot.date, lang)} ${slot.time}`}</h2>
                 <EditProcedureSelect
                     register={register}
                     errors={errors}

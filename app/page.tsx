@@ -13,6 +13,8 @@ import { useReportWebVitals } from 'next/web-vitals';
 import { useEffect, useState } from 'react';
 import { IS_ADMIN } from 'shared/const/isAdmin';
 import { Spinner } from 'features/spinner';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MainPage() {
     const [isLoading, setIsLoading] = useState(true);
@@ -39,6 +41,7 @@ function MainPage() {
                         <FeedbackSection />
                     </main>
                     <Footer />
+                    <ToastContainer autoClose={5000} />
                 </>
             ) : (
                 <Spinner />

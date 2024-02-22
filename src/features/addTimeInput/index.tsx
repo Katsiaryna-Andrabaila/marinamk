@@ -1,4 +1,4 @@
-import { AddSlotFormType } from 'entities/addSlots/lib/types';
+import { AddSlotFormType } from '../../entities/addSlots/lib/types';
 import { useState } from 'react';
 import { FieldErrors, UseFormRegister, UseFormWatch } from 'react-hook-form';
 

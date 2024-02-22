@@ -21,7 +21,6 @@ export const AddSlots = () => {
     });
 
     const onsubmit: SubmitHandler<AddSlotFormType> = (data) => {
-        console.log(data);
         const { date, time } = data;
         time.forEach(async (el) => {
             try {
@@ -86,6 +85,7 @@ export const AddSlots = () => {
                                 wrapperClassName="adminDatePicker"
                                 selected={field.value}
                                 inline
+                                minDate={new Date()}
                                 onChange={(date) => field.onChange(date)}
                             />
                         )}

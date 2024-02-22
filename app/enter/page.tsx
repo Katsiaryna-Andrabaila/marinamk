@@ -1,7 +1,7 @@
 'use client';
 
 import { AppProvider } from 'app/context';
-import { AdminEnterForm } from 'entities/adminEnterForm';
+import { AdminEnterForm } from '../../src/entities/adminEnterForm';
 import { Spinner } from 'features/spinner';
 import { useEffect, useState } from 'react';
 import { IS_ADMIN } from 'shared/const/isAdmin';

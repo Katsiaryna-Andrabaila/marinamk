@@ -12,6 +12,8 @@ import { ProcedureSelect } from 'features/procedureSelect';
 import { DateInput } from 'features/dateInput';
 import { Post } from '@prisma/client';
 import { NameInput } from 'features/nameInput';
+import { toast } from 'react-toastify';
+import { ToastSuccessNoEmail } from 'features/toastSuccessNoEmail';
 
 export const Modal = () => {
     const { setIsModalOpen } = useContext(AppContext);
@@ -34,7 +36,11 @@ export const Modal = () => {
         fetch('/api/post')
             .then((res) => res.json())
             .then((data) => {
-                setData(data);
+                setData(
+                    data
+                        .filter((el: Post) => el.isAvailable)
+                        .filter((el: Post) => new Date(el.date) >= new Date())
+                );
                 setLoading(false);
             });
     }, []);
@@ -42,12 +48,8 @@ export const Modal = () => {
     const handleClose = () => setIsModalOpen && setIsModalOpen(false);
 
     const onsubmit: SubmitHandler<AppointmentFormType> = async (submitData) => {
-        console.log(submitData);
         const { date, time, procedure, clientName, clientEmail } = submitData;
-        const targetSlot = data?.find(
-            (el) =>
-                new Date(el.date).getTime() === date.getDate() && el.id === time
-        );
+        const targetSlot: Post | undefined = data?.find((el) => el.id === time);
 
         const body = {
             id: time,
@@ -60,29 +62,45 @@ export const Modal = () => {
         };
 
         try {
-            await fetch('api/post', {
-                method: 'PUT',
+            const postResponse = await fetch('api/post', {
+                method: 'PATCH',
                 body: JSON.stringify(body),
             });
+
+            if (postResponse.ok) {
+                const sendResponse = await fetch('/api/send', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+
+                    body: JSON.stringify({
+                        name: clientName,
+                        email: clientEmail,
+                        date,
+                        time,
+                    }),
+                });
+
+                sendResponse.ok
+                    ? toast.success(t('toast-success-appointment-email'))
+                    : toast.warn(
+                          <ToastSuccessNoEmail
+                              date={date}
+                              time={targetSlot?.time}
+                          />,
+                          { autoClose: false }
+                      );
+            } else {
+                toast.error(t('toast-error-appointment'));
+            }
         } catch (e) {
             console.error(e);
+            toast.error(t('toast-error-appointment'));
         }
 
-        await fetch('/api/send', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-
-            body: JSON.stringify({
-                name: clientName,
-                email: clientEmail,
-                date,
-                time,
-            }),
-        });
-
         reset();
+        setIsModalOpen && setIsModalOpen(false);
     };
 
     if (isLoading) return <p>Loading...</p>;
