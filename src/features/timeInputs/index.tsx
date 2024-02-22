@@ -35,7 +35,12 @@ export const TimeInputs = ({
                 )
                 .map((el: Post) => ({ id: el.id, time: el.time }));
 
-            setTime(targetTime);
+            setTime(
+                targetTime.sort(
+                    (a: { id: ''; time: '' }, b: { id: ''; time: '' }) =>
+                        Number(a.time.slice(0, 2)) - Number(b.time.slice(0, 2))
+                )
+            );
         }
     }, [date, slots]);
 
