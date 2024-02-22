@@ -35,7 +35,9 @@ export const Modal = () => {
             .then((res) => res.json())
             .then((data) => {
                 setData(
-                    data.filter((el: Post) => new Date(el.date) >= new Date())
+                    data
+                        .filter((el: Post) => el.isAvailable)
+                        .filter((el: Post) => new Date(el.date) >= new Date())
                 );
                 setLoading(false);
             });
@@ -63,7 +65,7 @@ export const Modal = () => {
 
         try {
             await fetch('api/post', {
-                method: 'PUT',
+                method: 'PATCH',
                 body: JSON.stringify(body),
             });
         } catch (e) {
@@ -85,6 +87,7 @@ export const Modal = () => {
         });
 
         reset();
+        setIsModalOpen && setIsModalOpen(false);
     };
 
     if (isLoading) return <p>Loading...</p>;
