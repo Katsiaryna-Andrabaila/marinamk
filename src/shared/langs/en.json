@@ -53,5 +53,11 @@
     "selectTimeError": "Please, select time",
     "selectProcedureError": "Please, select a procedure",
     "correctEmailError": "Enter a correct email address",
-    "correctNameError": "Enter correct name"
+    "correctNameError": "Enter correct name",
+
+    "toast-success-appointment-email": "Your appointment has been successfully added! A confirmation email has been sent to the specified address.",
+    "toast-success-appointment-no-email1": "Your appointment has been successfully added!",
+    "toast-success-appointment-no-email2": "But there were problems with sending the confirmation letter.",
+    "toast-success-appointment-no-email3": "Please remember the time and date of your visit: ",
+    "toast-error-appointment": "Something went wrong. Please, try again later"
 }

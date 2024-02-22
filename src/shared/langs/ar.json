@@ -53,5 +53,11 @@
     "selectTimeError": "من فضلك اختر الوقت",
     "selectProcedureError": "من فضلك، حدد الإجراء",
     "correctEmailError": "يرجى إدخال عنوان بريد إلكتروني صالح",
-    "correctNameError": "أدخل الاسم الصحيح"
+    "correctNameError": "أدخل الاسم الصحيح",
+
+    "toast-success-appointment-email": "تمت إضافة موعدك بنجاح! تم إرسال رسالة تأكيد بالبريد الإلكتروني إلى العنوان المحدد.",
+    "toast-success-appointment-no-email1": "تمت إضافة موعدك بنجاح!",
+    "toast-success-appointment-no-email2": "ولكن كانت هناك مشاكل في إرسال خطاب التأكيد.",
+    "toast-success-appointment-no-email3": "يرجى تذكر وقت وتاريخ زيارتك: ",
+    "toast-error-appointment": "هناك خطأ ما. الرجاء معاودة المحاولة في وقت لاحق"
 }

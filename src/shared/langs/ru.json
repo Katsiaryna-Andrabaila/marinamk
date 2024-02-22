@@ -53,5 +53,11 @@
     "selectTimeError": "Пожалуйста, выберите время",
     "selectProcedureError": "Пожалуйста, выберите процедуру",
     "correctEmailError": "Введите корректный адрес электронной почты",
-    "correctNameError": "Введите корректное имя"
+    "correctNameError": "Введите корректное имя",
+
+    "toast-success-appointment-email": "Ваш визит успешно добавлен! На указанный адрес было отправлено письмо с подтверждением.",
+    "toast-success-appointment-no-email1": "Ваш визит успешно добавлен!",
+    "toast-success-appointment-no-email2": "Но возникли проблемы с отправкой письма с подтверждением.",
+    "toast-success-appointment-no-email3": "Пожалуйста, запомните время и дату вашего визита: ",
+    "toast-error-appointment": "Что-то пошло не так. Пожалуйста, повторите попытку позже"
 }

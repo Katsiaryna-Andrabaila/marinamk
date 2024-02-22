@@ -1,17 +1,19 @@
 import { Post } from '@prisma/client';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './lib/schedule.styles.scss';
 import { getSlotDate } from '../../shared/utils/getSlotDate';
 import { Edit } from 'shared/ui/Edit';
 import { Delete } from 'shared/ui/Delete';
 import { EditSlotModal } from '../editSlotModal';
 import { RU_NAMES } from 'shared/const/procedureRuNames';
+import { AppContext } from 'app/context';
 
 export const Schedule = () => {
     const [data, setData] = useState<Post[] | null>(null);
     const [isLoading, setLoading] = useState(true);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [activeSlot, setActiveSlot] = useState<Post | undefined>();
+    const { lang } = useContext(AppContext);
 
     useEffect(() => {
         fetch('/api/post')
@@ -52,7 +54,7 @@ export const Schedule = () => {
                     {resultData.map((item) => {
                         return (
                             <tr key={item.id}>
-                                <td>{getSlotDate(item.date)}</td>
+                                <td>{getSlotDate(item.date, lang)}</td>
                                 <td>{item.time}</td>
                                 <td>
                                     <p>
