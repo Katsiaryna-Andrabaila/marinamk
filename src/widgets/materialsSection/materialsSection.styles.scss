@@ -1,6 +1,6 @@
 .materials-section {
     width: 100%;
-    background: var(--main-pink);
+    background: var(--pastel-blue);
     padding: 3rem 0;
     margin: 0 auto;
     text-align: center;
@@ -9,10 +9,13 @@
     h2 {
         margin-bottom: 2rem;
         text-align: center;
+        color: var(--grey-5);
+        font-size: 1.3rem;
     }
     p {
         width: 90%;
         margin: auto;
+        color: var(--grey-5);
     }
 
     .materials_images {

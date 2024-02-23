@@ -1,6 +1,6 @@
 .about-section {
     width: 100%;
-    background: var(--main-pink);
+    background: var(--pastel-blue);
     padding: 3rem 0;
     margin: 0 auto;
     text-align: center;
@@ -9,9 +9,13 @@
     .about-wrapper {
         width: 90%;
         margin: auto;
+        h2 {
+            font-size: 1.3rem;
+        }
         h2,
         p {
             margin-bottom: 2rem;
+            color: var(--grey-5);
         }
 
         .about_images {

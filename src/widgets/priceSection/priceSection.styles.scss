@@ -1,6 +1,10 @@
 .price-section {
     width: 100%;
-    background: var(--main-blue);
+    background:
+        url('/icons/hands.png') no-repeat bottom right,
+        url('/icons/rose.png') no-repeat top left;
+    background-size: 15%;
+    background-color: var(--pastel-pink);
     padding: 3rem 0;
     margin: 0 auto;
     text-align: center;
@@ -9,6 +13,8 @@
     h2 {
         margin-bottom: 2rem;
         text-align: center;
+        color: var(--grey-5);
+        font-size: 1.3rem;
     }
 
     .services {
@@ -67,6 +73,12 @@
         .service_prices {
             width: 90%;
         }
+    }
+}
+
+@media (max-width: 767px) {
+    .price-section {
+        background-image: none;
     }
 }
 

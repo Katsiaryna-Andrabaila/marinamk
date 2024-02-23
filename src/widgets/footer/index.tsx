@@ -30,8 +30,9 @@ export const Footer = ({ isAbsolute }: FooterProps) => {
                                 target="_blank"
                             >
                                 <strong>
-                                    6 Souzan Moubarak, AZ Zaytoun Al Qebleyah,
-                                    Amreya, Cairo Governorate 4511023
+                                    Cairo
+                                    {/* 6 Souzan Moubarak, AZ Zaytoun Al Qebleyah,
+                                    Amreya, Cairo Governorate 4511023 */}
                                 </strong>
                             </Link>
                         </p>
@@ -46,7 +47,7 @@ export const Footer = ({ isAbsolute }: FooterProps) => {
                     href="https://www.linkedin.com/in/katsiaryna-andrabaila-94669b23a/"
                     target="_blank"
                 >
-                    @TechnoExpert
+                    @NextStep
                     <span> 2024</span>
                 </Link>
             </div>
