@@ -33,13 +33,11 @@ export const Modal = () => {
     });
 
     useEffect(() => {
-        fetch('/api/post')
+        fetch('/api/appointment')
             .then((res) => res.json())
             .then((data) => {
                 setData(
-                    data
-                        .filter((el: Post) => el.isAvailable)
-                        .filter((el: Post) => new Date(el.date) >= new Date())
+                    data.filter((el: Post) => new Date(el.date) >= new Date())
                 );
                 setLoading(false);
             });

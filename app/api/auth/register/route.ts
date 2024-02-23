@@ -9,7 +9,7 @@ import jwt from 'jsonwebtoken';
 const registerHandler: NextApiHandlerWithCookie = async (req, res) => {
     // извлекаем данные из тела запроса
     // одним из преимуществ использования Prisma является автоматическая генерация типов моделей
-    const data: Pick<User, 'username' | 'email' | 'password'> = JSON.parse(
+    const data: Pick<User, 'name' | 'email' | 'password'> = JSON.parse(
         req.body
     );
 
@@ -43,7 +43,7 @@ const registerHandler: NextApiHandlerWithCookie = async (req, res) => {
             // не "выбираем" пароль
             select: {
                 id: true,
-                username: true,
+                name: true,
                 email: true,
             },
         });
