@@ -9,7 +9,7 @@
 
     .react-datepicker {
         grid-area: date;
-        width: 80%;
+        width: 85%;
     }
 
     .react-datepicker__header {
@@ -119,12 +119,62 @@
 .clean_base_button {
     position: absolute;
     bottom: 5%;
-    left: 40%;
-    width: 20%;
+    left: 38%;
+    width: 25vw;
     height: 2.5rem;
     background-color: var(--main-green);
     border: none;
     border-radius: 8px;
     color: white;
     cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .slots_form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        .react-datepicker {
+            width: 70%;
+        }
+
+        .time_block {
+            width: 70%;
+            .time_wrapper {
+                width: 100%;
+            }
+        }
+
+        .add_button {
+            width: 70%;
+        }
+    }
+
+    .clean_base_button {
+        left: 36%;
+        width: 30vw;
+    }
+}
+
+@media (max-width: 585px) {
+    .clean_base_button {
+        left: 30%;
+        width: 40vw;
+    }
+}
+
+@media (max-width: 475px) {
+    .slots_form {
+        .react-datepicker,
+        .time_block,
+        .add_button {
+            width: 100%;
+        }
+    }
+
+    .clean_base_button {
+        left: 3%;
+        width: 93%;
+    }
 }
