@@ -17,8 +17,10 @@
         font-size: 16px;
         overflow: hidden;
         span {
-            width: 50%;
-            height: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 33%;
             padding: 9px 14px 9px 9px;
             cursor: pointer;
             border: none;
@@ -31,6 +33,18 @@
         .tab_active {
             border-bottom: 1px solid var(--main-green);
             color: var(--main-green);
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .admin_content_wrapper {
+        padding: 2rem 1rem;
+
+        .tabs {
+            span {
+                padding: 5px;
+            }
         }
     }
 }
