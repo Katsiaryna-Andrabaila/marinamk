@@ -1,14 +1,14 @@
-import { Post } from '@prisma/client';
+import { Service } from '@prisma/client';
 import { Dispatch, SetStateAction } from 'react';
 
 type DeleteProps = {
-    id: string;
-    data: Post[];
-    setData: Dispatch<SetStateAction<Post[] | null>>;
+    id: number;
+    data: Service[];
+    setData: Dispatch<SetStateAction<Service[] | null>>;
     stroke?: string;
 };
 
-export const Delete = ({
+export const DeleteService = ({
     id,
     data,
     setData,
@@ -16,7 +16,7 @@ export const Delete = ({
 }: DeleteProps) => {
     const handleClick = async () => {
         try {
-            await fetch('api/post', {
+            await fetch('api/service', {
                 method: 'DELETE',
                 body: JSON.stringify({
                     id,

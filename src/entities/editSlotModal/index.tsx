@@ -28,7 +28,6 @@ export const EditSlotModal = ({
     });
 
     const onsubmit: SubmitHandler<EditFormData> = async (data) => {
-        console.log(data);
         const { procedure, clientEmail, clientName, isAvailable } = data;
 
         try {
@@ -41,10 +40,10 @@ export const EditSlotModal = ({
                     clientName: clientName || slot.clientName,
                     isAvailable,
                 }),
+            }).then(() => {
+                setIsEditModalOpen(false);
+                setActiveSlot(undefined);
             });
-
-            setIsEditModalOpen(false);
-            setActiveSlot(undefined);
         } catch (e) {
             console.error(e);
         }

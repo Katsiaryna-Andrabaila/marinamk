@@ -1,0 +1,56 @@
+.services_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    .category {
+        h2 {
+            margin: 0.5rem 0;
+            text-align: left;
+            color: var(--main-green);
+        }
+        .category_table {
+            tbody {
+                tr {
+                    border-bottom: 1px solid #02c66e;
+                    .name_sell {
+                        text-align: left;
+                    }
+                    .price_sell {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.3rem;
+                        width: 7rem;
+                        .service_price_input {
+                            width: 100%;
+                            height: 2.5rem;
+                            border: 1px solid var(--main-blue);
+                            border-radius: 5px;
+                            padding: 5px;
+                            font-size: 14px;
+                            font-weight: 600;
+                        }
+                        .service_price_input:focus {
+                            background-color: var(--main-blue);
+                            border-color: #216ba5;
+                            outline: none;
+                        }
+                        svg {
+                            width: 2rem;
+                            cursor: pointer;
+                        }
+                    }
+                    .delete_sell {
+                        svg {
+                            cursor: pointer;
+                        }
+                    }
+                    td {
+                        padding: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+}

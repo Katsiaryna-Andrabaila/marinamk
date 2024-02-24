@@ -19,7 +19,8 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
     const body = await req.json();
-    const data: Pick<Service, 'name' | 'category' | 'price'> = body;
+    const data: Pick<Service, 'name' | 'category' | 'subcategory' | 'price'> =
+        body;
 
     if (!checkFields(data, ['name', 'category', 'price'])) {
         return new Response('Some required fields are missing', {
@@ -45,7 +46,7 @@ export async function POST(req: NextRequest) {
 export async function PATCH(req: NextRequest) {
     const body: Service = await req.json();
     const data: Service = body;
-    const { id, name, category, price } = data;
+    const { id, name, category, subcategory, price } = data;
 
     if (!checkFields(data, ['id'])) {
         return new Response('Service ID is missing', {
@@ -61,6 +62,7 @@ export async function PATCH(req: NextRequest) {
             data: {
                 name,
                 category,
+                subcategory,
                 price,
             },
         });

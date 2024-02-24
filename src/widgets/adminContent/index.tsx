@@ -4,11 +4,14 @@ import { useState } from 'react';
 import './adminContent.styles.scss';
 import { AddSlots } from '../../entities/addSlots';
 import { Schedule } from '../../entities/schedule';
+import { Services } from '../../entities/services';
 
 export const AdminContent = () => {
-    const [activeTab, setActiveTab] = useState<'add' | 'watch'>('watch');
+    const [activeTab, setActiveTab] = useState<'add' | 'watch' | 'service'>(
+        'service'
+    );
 
-    const handleClick = (tab: 'add' | 'watch') => setActiveTab(tab);
+    const handleClick = (tab: 'add' | 'watch' | 'service') => setActiveTab(tab);
 
     return (
         <section className="admin_content_wrapper">
@@ -25,8 +28,20 @@ export const AdminContent = () => {
                 >
                     Расписание
                 </span>
+                <span
+                    className={activeTab === 'service' ? 'tab_active' : ''}
+                    onClick={() => handleClick('service')}
+                >
+                    Сервисы
+                </span>
             </div>
-            {activeTab === 'add' ? <AddSlots /> : <Schedule />}
+            {activeTab === 'add' ? (
+                <AddSlots />
+            ) : activeTab === 'watch' ? (
+                <Schedule />
+            ) : (
+                <Services />
+            )}
         </section>
     );
 };
