@@ -31,7 +31,7 @@ const userHandler: NextApiHandler = async (req, res) => {
             select: {
                 id: true,
                 email: true,
-                username: true,
+                name: true,
             },
         });
 
