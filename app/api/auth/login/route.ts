@@ -27,7 +27,7 @@ const loginHandler: NextApiHandlerWithCookie = async (req, res) => {
                 id: true,
                 email: true,
                 password: true,
-                username: true,
+                name: true,
             },
         });
 
@@ -84,7 +84,7 @@ const loginHandler: NextApiHandlerWithCookie = async (req, res) => {
             user: {
                 id: user.id,
                 email: user.email,
-                username: user.username,
+                username: user.name,
             },
             accessToken,
         });

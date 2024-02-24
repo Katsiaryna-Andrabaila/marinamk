@@ -11,9 +11,10 @@
             color: var(--main-green);
         }
         .category_table {
+            border-collapse: collapse;
             tbody {
                 tr {
-                    border-bottom: 1px solid #02c66e;
+                    border-bottom: 1px dotted #02c66e;
                     .name_sell {
                         text-align: left;
                     }
@@ -42,12 +43,38 @@
                         }
                     }
                     .delete_sell {
+                        padding: 0 0.5rem;
                         svg {
                             cursor: pointer;
                         }
                     }
                     td {
                         padding: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .services_wrapper {
+        .category {
+            .category_table {
+                tbody {
+                    tr {
+                        td {
+                            font-size: 14px;
+                            font-weight: 600;
+                        }
+                        .price_sell {
+                            width: 5rem;
+                        }
+                        .delete_sell {
+                            .delete_slot {
+                                width: 1rem;
+                            }
+                        }
                     }
                 }
             }

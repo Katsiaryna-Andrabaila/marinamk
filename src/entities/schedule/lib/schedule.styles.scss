@@ -5,7 +5,7 @@
 
     tbody {
         tr {
-            border-bottom: 1px solid #02c66e;
+            border-bottom: 1px dotted #02c66e;
             th,
             td {
                 padding: 0.5rem;
@@ -13,6 +13,37 @@
                 .edit_slot,
                 .delete_slot {
                     cursor: pointer;
+                }
+            }
+            .date_cell {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .edit_cell,
+            .delete_cell {
+                padding: 0 0.5rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .schedule_table {
+        tbody {
+            tr {
+                td {
+                    p {
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+                }
+                .edit_cell,
+                .delete_cell {
+                    .edit_slot,
+                    .delete_slot {
+                        width: 1rem;
+                    }
                 }
             }
         }

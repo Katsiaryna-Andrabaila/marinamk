@@ -79,7 +79,7 @@
         .update_button {
             width: 100%;
             height: 2.5rem;
-            background-color: #216ba5;
+            background-color: #368aca;
             border: none;
             border-radius: 8px;
             color: white;
@@ -88,6 +88,14 @@
                 background-color: var(--grey-2);
                 cursor: default;
             }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .edit_wrapper {
+        .edit_slot_form {
+            width: 80%;
         }
     }
 }

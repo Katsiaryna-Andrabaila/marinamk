@@ -35,6 +35,7 @@ export const Services = () => {
                                     )
                                     .map((el) => (
                                         <ServiceRow
+                                            key={el.id}
                                             el={el}
                                             activeService={activeService}
                                             activeValue={activeValue}
@@ -51,6 +52,7 @@ export const Services = () => {
                                     )
                                     .map((el) => (
                                         <ServiceRow
+                                            key={el.id}
                                             el={el}
                                             activeService={activeService}
                                             activeValue={activeValue}
@@ -71,6 +73,7 @@ export const Services = () => {
                                     .filter((el) => el.category === 'pedicure')
                                     .map((el) => (
                                         <ServiceRow
+                                            key={el.id}
                                             el={el}
                                             activeService={activeService}
                                             activeValue={activeValue}

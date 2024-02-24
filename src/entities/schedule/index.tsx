@@ -1,7 +1,7 @@
 import { Post } from '@prisma/client';
 import { useEffect, useState } from 'react';
 import './lib/schedule.styles.scss';
-import { getSlotDate } from '../../shared/utils/getSlotDate';
+import { getSlotDate } from 'shared/utils/getSlotDate';
 import { Edit } from 'shared/ui/Edit';
 import { Delete } from 'shared/ui/Delete';
 import { EditSlotModal } from '../editSlotModal';
@@ -44,16 +44,17 @@ export const Schedule = () => {
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th></th>
                     </tr>
                 </thead>
 
                 <tbody>
                     {resultData.map((item) => (
                         <tr key={item.id}>
-                            <td>{getSlotDate(item.date, 'ru')}</td>
-                            <td>{item.time}</td>
-                            <td>
+                            <td className="date_cell">
+                                <p>{getSlotDate(item.date, 'ru')}</p>
+                                <p>{item.time}</p>
+                            </td>
+                            <td className="service_cell">
                                 <p>
                                     {
                                         RU_NAMES[
@@ -64,14 +65,14 @@ export const Schedule = () => {
                                 <p>{item.clientName}</p>
                                 <p>{item.clientEmail}</p>
                             </td>
-                            <td>
+                            <td className="edit_cell">
                                 <Edit
                                     slot={item}
                                     setIsEditModalOpen={setIsEditModalOpen}
                                     setActiveSlot={setActiveSlot}
                                 />
                             </td>
-                            <td>
+                            <td className="delete_cell">
                                 <Delete
                                     id={item.id}
                                     data={data}
