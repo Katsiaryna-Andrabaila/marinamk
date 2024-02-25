@@ -14,6 +14,7 @@ import { Post } from '@prisma/client';
 import { NameInput } from 'features/nameInput';
 import { toast } from 'react-toastify';
 import { ToastSuccessNoEmail } from 'features/toastSuccessNoEmail';
+import { Spinner } from 'features/spinner';
 
 export const Modal = () => {
     const { setIsModalOpen } = useContext(AppContext);
@@ -60,6 +61,8 @@ export const Modal = () => {
         };
 
         try {
+            setLoading(true);
+
             const postResponse = await fetch('api/post', {
                 method: 'PATCH',
                 body: JSON.stringify(body),
@@ -95,13 +98,14 @@ export const Modal = () => {
         } catch (e) {
             console.error(e);
             toast.error(t('toast-error-appointment'));
+        } finally {
+            reset();
+            setIsModalOpen && setIsModalOpen(false);
+            setLoading(false);
         }
-
-        reset();
-        setIsModalOpen && setIsModalOpen(false);
     };
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <Spinner />;
     if (!data) return <p>No data</p>;
 
     return (
