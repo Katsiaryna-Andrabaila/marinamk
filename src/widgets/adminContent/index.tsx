@@ -8,7 +8,7 @@ import { Services } from '../../entities/services';
 
 export const AdminContent = () => {
     const [activeTab, setActiveTab] = useState<'add' | 'watch' | 'service'>(
-        'service'
+        'watch'
     );
 
     const handleClick = (tab: 'add' | 'watch' | 'service') => setActiveTab(tab);
