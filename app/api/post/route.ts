@@ -6,6 +6,7 @@ import { Post } from '@prisma/client';
 //import { NextApiRequest, NextApiResponse } from 'next';
 //import { createRouter } from 'next-connect';
 import { NextRequest } from 'next/server';
+import { setTimeToDate } from 'shared/apiUtils/setTimeToDate';
 
 //const postsHandler = createRouter<NextApiRequestWithUserId, NextApiResponse>();
 
@@ -41,8 +42,9 @@ export async function POST(req: NextRequest) {
         });
     }
 
-    if (new Date(body.date) < new Date()) {
-        return new Response('Unable to add slot before today', {
+    const slotTimeStamp = new Date(setTimeToDate(body.date, body.time));
+    if (slotTimeStamp < new Date()) {
+        return new Response('Unable to add slot with expired date', {
             status: 400,
         });
     }

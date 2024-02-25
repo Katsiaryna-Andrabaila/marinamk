@@ -6,6 +6,7 @@ import { Edit } from 'shared/ui/Edit';
 import { Delete } from 'shared/ui/Delete';
 import { EditSlotModal } from '../editSlotModal';
 import { RU_NAMES } from 'shared/const/procedureRuNames';
+import { setTimeToDate } from 'shared/apiUtils/setTimeToDate';
 
 export const Schedule = () => {
     const [data, setData] = useState<Post[] | null>(null);
@@ -26,7 +27,7 @@ export const Schedule = () => {
     if (!data) return <p>No data</p>;
 
     const resultData = data
-        .filter((el) => new Date(el.date) >= new Date())
+        .filter((el) => new Date(setTimeToDate(el.date, el.time)) >= new Date())
         .sort((a, b) => {
             if (a.date < b.date) return -1;
             if (a.date > b.date) return 1;
