@@ -15,6 +15,7 @@ import { NameInput } from 'features/nameInput';
 import { toast } from 'react-toastify';
 import { ToastSuccessNoEmail } from 'features/toastSuccessNoEmail';
 import { Spinner } from 'features/spinner';
+import { setTimeToDate } from 'shared/apiUtils/setTimeToDate';
 
 export const Modal = () => {
     const { setIsModalOpen } = useContext(AppContext);
@@ -38,7 +39,11 @@ export const Modal = () => {
             .then((res) => res.json())
             .then((data) => {
                 setData(
-                    data.filter((el: Post) => new Date(el.date) >= new Date())
+                    data.filter(
+                        (el: Post) =>
+                            new Date(setTimeToDate(el.date, el.time)) >=
+                            new Date()
+                    )
                 );
                 setLoading(false);
             });
