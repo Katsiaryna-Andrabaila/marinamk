@@ -2,7 +2,7 @@ import { serialize } from 'cookie';
 import { NextApiResponse } from 'next';
 import { CookieArgs, CookiesMiddleware } from '../apiTypes';
 
-const cookieFn = (
+export const cookieFn = (
     res: NextApiResponse,
     { name, value, options = {} }: CookieArgs
 ) => {

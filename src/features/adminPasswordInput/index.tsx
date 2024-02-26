@@ -4,11 +4,16 @@ import { Control, Controller, FieldErrors } from 'react-hook-form';
 type AdminPasswordInputProps = {
     errors: FieldErrors<AdminFormType>;
     control: Control<AdminFormType, string>;
+    apiErrors: {
+        name?: string | undefined;
+        password?: string | undefined;
+    };
 };
 
 export const AdminPasswordInput = ({
     control,
     errors,
+    apiErrors,
 }: AdminPasswordInputProps) => {
     return (
         <div className="password_input_wrapper">
@@ -18,8 +23,6 @@ export const AdminPasswordInput = ({
                 defaultValue={''}
                 rules={{
                     required: true,
-                    validate: (value) =>
-                        value === process.env.NEXT_PUBLIC_ADMIN_PASSWORD,
                 }}
                 render={({ field }) => (
                     <input
@@ -35,6 +38,11 @@ export const AdminPasswordInput = ({
                     />
                 )}
             />
+            {apiErrors && (
+                <p style={{ color: '#FF3F25', fontSize: '13px' }}>
+                    {apiErrors.password}
+                </p>
+            )}
             {errors?.password && (
                 <p style={{ color: '#FF3F25', fontSize: '13px' }}>
                     Please, provide correct password

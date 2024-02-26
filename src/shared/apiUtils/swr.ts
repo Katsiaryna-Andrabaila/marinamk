@@ -25,8 +25,10 @@ export function useUser() {
     // `error` - обычная ошибка (необработанное исключение)
     // `data.message` - сообщение о кастомной ошибке, например:
     // res.status(404).json({ message: 'User not found' })
-    if (error || (data as { message: string }).message) {
-        console.log(error || (data as { message: string }).message);
+    if (error || (data as { message: string } | undefined)?.message) {
+        console.log(
+            error || (data as { message: string } | undefined)?.message
+        );
 
         return {
             user: undefined,
@@ -36,8 +38,9 @@ export function useUser() {
     }
 
     return {
-        user: (data as User).user as User,
-        accessToken: (data as User).accessToken as string,
+        user: (data as { user: User; accessToken: string } | undefined)?.user,
+        accessToken: (data as { user: User; accessToken: string } | undefined)
+            ?.accessToken as string,
         mutate,
     };
 }

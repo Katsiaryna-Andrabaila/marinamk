@@ -1,33 +1,31 @@
 import prisma from 'shared/apiUtils/prisma';
 import jwt from 'jsonwebtoken';
-import { NextApiHandler } from 'next';
+import { NextRequest } from 'next/server';
 
-const userHandler: NextApiHandler = async (req, res) => {
-    // извлекаем токен идентификации из куки
-    const idToken = req.cookies[process.env.COOKIE_NAME];
+export async function GET(req: NextRequest) {
+    const idToken = req.cookies.get(process.env.COOKIE_NAME);
 
-    // если токен отсутствует
     if (!idToken) {
-        return res.status(401).json({ message: 'ID token must be provided' });
+        return new Response('ID token must be provided', {
+            status: 401,
+        });
     }
 
     try {
-        // декодируем токен
         const decodedToken = (await jwt.verify(
-            idToken,
+            idToken.value,
             process.env.ID_TOKEN_SECRET
         )) as unknown as { userId: string };
 
-        // если полезная нагрузка отсутствует
         if (!decodedToken || !decodedToken.userId) {
-            return res.status(403).json({ message: 'Invalid token' });
+            return new Response('Invalid token', {
+                status: 403,
+            });
         }
 
-        // получаем данные пользователя
         const user = await prisma.user.findUnique({
             where: { id: decodedToken.userId },
-            // важно!
-            // не получаем пароль
+
             select: {
                 id: true,
                 email: true,
@@ -35,12 +33,12 @@ const userHandler: NextApiHandler = async (req, res) => {
             },
         });
 
-        // если данные отсутствуют
         if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+            return new Response('User not found', {
+                status: 404,
+            });
         }
 
-        // генерируем токен доступа
         const accessToken = await jwt.sign(
             { userId: user.id },
             process.env.ACCESS_TOKEN_SECRET,
@@ -49,12 +47,19 @@ const userHandler: NextApiHandler = async (req, res) => {
             }
         );
 
-        // возвращаем данные пользователя и токен доступа
-        res.status(200).json({ user, accessToken });
+        return new Response(
+            JSON.stringify({
+                user,
+                accessToken,
+            }),
+            {
+                status: 200,
+            }
+        );
     } catch (e) {
         console.log(e);
-        res.status(500).json({ message: 'User get error' });
+        return new Response('User get error', {
+            status: 500,
+        });
     }
-};
-
-export default userHandler;
+}

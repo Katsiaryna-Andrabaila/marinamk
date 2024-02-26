@@ -1,28 +1,27 @@
-import { NextApiHandlerWithCookie } from 'shared/apiTypes';
 import checkFields from 'shared/apiUtils/checkFields';
-import cookies from 'shared/apiUtils/cookie';
 import prisma from 'shared/apiUtils/prisma';
 import { User } from '@prisma/client';
 import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
+import { NextRequest } from 'next/server';
+import { serialize } from 'cookie';
 
-const loginHandler: NextApiHandlerWithCookie = async (req, res) => {
-    const data: Pick<User, 'email' | 'password'> = JSON.parse(req.body);
+export async function POST(req: NextRequest) {
+    const body = await req.json();
+    const data: Pick<User, 'name' | 'password'> = body;
 
-    if (!checkFields(data, ['email', 'password'])) {
-        return res
-            .status(400)
-            .json({ message: 'Some required fields are missing' });
+    if (!checkFields(data, ['name', 'password'])) {
+        return new Response('Some required fields are missing', {
+            status: 400,
+        });
     }
 
     try {
-        // получаем данные пользователя
         const user = await prisma.user.findUnique({
             where: {
-                email: data.email,
+                name: data.name,
             },
-            // важно!
-            // здесь нам нужен пароль
+
             select: {
                 id: true,
                 email: true,
@@ -31,23 +30,23 @@ const loginHandler: NextApiHandlerWithCookie = async (req, res) => {
             },
         });
 
-        // если данные отсутствуют
         if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+            return new Response('User not found', {
+                status: 404,
+            });
         }
 
-        // проверяем пароль
         const isPasswordCorrect = await argon2.verify(
             user.password,
             data.password
         );
 
-        // если введен неправильный пароль
         if (!isPasswordCorrect) {
-            return res.status(403).json({ message: 'Wrong password' });
+            return new Response('Wrong password', {
+                status: 403,
+            });
         }
 
-        // генерируем токен идентификации
         const idToken = await jwt.sign(
             { userId: user.id },
             process.env.ID_TOKEN_SECRET,
@@ -56,7 +55,6 @@ const loginHandler: NextApiHandlerWithCookie = async (req, res) => {
             }
         );
 
-        // генерируем токен доступа
         const accessToken = await jwt.sign(
             { userId: user.id },
             process.env.ACCESS_TOKEN_SECRET,
@@ -65,33 +63,44 @@ const loginHandler: NextApiHandlerWithCookie = async (req, res) => {
             }
         );
 
-        // записываем токен идентификации в куки
-        res.cookie({
-            name: process.env.COOKIE_NAME,
-            value: idToken,
-            options: {
-                httpOnly: true,
-                maxAge: 1000 * 60 * 60 * 24 * 7,
-                path: '/',
-                sameSite: true,
-                secure: true,
-            },
-        });
+        const options = {
+            httpOnly: true,
+            maxAge: 60 * 60 * 24 * 7,
+            expires: new Date(Date.now() + 60 * 60 * 24 * 7),
+            path: '/',
+            sameSite: true,
+            secure: true,
+        };
 
-        // возвращаем данные пользователя (без пароля!)
-        // и токен доступа
-        res.status(200).json({
-            user: {
-                id: user.id,
-                email: user.email,
-                username: user.name,
-            },
-            accessToken,
-        });
+        const stringValue =
+            typeof idToken === 'object'
+                ? 'j:' + JSON.stringify(idToken)
+                : String(idToken);
+
+        return new Response(
+            JSON.stringify({
+                user: {
+                    id: user.id,
+                    email: user.email,
+                    username: user.name,
+                },
+                accessToken,
+            }),
+            {
+                status: 200,
+                headers: {
+                    'Set-Cookie': serialize(
+                        process.env.COOKIE_NAME,
+                        String(stringValue),
+                        options
+                    ),
+                },
+            }
+        );
     } catch (e) {
         console.log(e);
-        res.status(500).json({ message: 'User login error' });
+        return new Response('User login error', {
+            status: 500,
+        });
     }
-};
-
-export default cookies(loginHandler);
+}
