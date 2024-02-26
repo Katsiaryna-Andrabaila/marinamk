@@ -40,13 +40,10 @@ export async function POST(req: NextRequest, res: NextApiResponseWithCookie) {
             },
         });
 
-        // генерируем токен идентификации на основе ID пользователя
         const idToken = await jwt.sign(
             { userId: newUser.id },
             process.env.ID_TOKEN_SECRET,
             {
-                // срок жизни токена, т.е. время, в течение которого токен будет считаться валидным составляет 7 дней
-                // продумать автоматическое продление токена
                 expiresIn: '7d',
             }
         );
@@ -55,24 +52,17 @@ export async function POST(req: NextRequest, res: NextApiResponseWithCookie) {
             { userId: newUser.id },
             process.env.ACCESS_TOKEN_SECRET,
             {
-                // важно!
-                // такой срок жизни токена доступа приемлем только при разработке приложения
-                // в production поставить примерно 1 час
                 expiresIn: '1d',
             }
         );
 
-        // записываем токен идентификации в куки
         res.cookie({
             name: process.env.COOKIE_NAME,
             value: idToken,
             options: {
                 httpOnly: true,
-                // значение данной настройки должно совпадать со значением настройки `expiresIn` токена
                 maxAge: 1000 * 60 * 60 * 24 * 7,
-                // куки применяется для всего приложения
                 path: '/',
-                // клиент и сервер живут по одному адресу
                 sameSite: true,
                 secure: true,
             },
@@ -137,92 +127,3 @@ export async function DELETE(req: NextRequest) {
         });
     }
 }
-
-/* const registerHandler: NextApiHandlerWithCookie = async (req, res) => {
-    const data: Pick<User, 'name' | 'email' | 'password'> = JSON.parse(
-        req.body
-    );
-
-    if (!checkFields(data, ['email', 'password'])) {
-        return res
-            .status(400)
-            .json({ message: 'Some required fields are missing' });
-    }
-
-    try {
-        const existingUser = await prisma.user.findUnique({
-            where: { email: data.email },
-        });
-
-        if (existingUser) {
-            return res.status(409).json({ message: 'Email already in use' });
-        }
-
-        // хэшируем пароль
-        const passwordHash = await argon2.hash(data.password);
-        // и заменяем им оригинальный
-        data.password = passwordHash;
-
-        const newUser = await prisma.user.create({
-            data,
-            // важно!
-            // не "выбираем" пароль
-            select: {
-                id: true,
-                name: true,
-                email: true,
-            },
-        });
-
-        // генерируем токен идентификации на основе ID пользователя
-        const idToken = await jwt.sign(
-            { userId: newUser.id },
-            process.env.ID_TOKEN_SECRET,
-            {
-                // срок жизни токена, т.е. время, в течение которого токен будет считаться валидным составляет 7 дней
-                // продумать автоматическое продление токена
-                expiresIn: '7d',
-            }
-        );
-
-        const accessToken = await jwt.sign(
-            { userId: newUser.id },
-            process.env.ACCESS_TOKEN_SECRET,
-            {
-                // важно!
-                // такой срок жизни токена доступа приемлем только при разработке приложения
-                // в production поставить примерно 1 час
-                expiresIn: '1d',
-            }
-        );
-
-        // записываем токен идентификации в куки
-        res.cookie({
-            name: process.env.COOKIE_NAME,
-            value: idToken,
-            // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#attributes
-            // важно!
-            // настройки `httpOnly: true` и `secure: true` являются обязательными
-            options: {
-                httpOnly: true,
-                // значение данной настройки должно совпадать со значением настройки `expiresIn` токена
-                maxAge: 1000 * 60 * 60 * 24 * 7,
-                // куки применяется для всего приложения
-                path: '/',
-                // клиент и сервер живут по одному адресу
-                sameSite: true,
-                secure: true,
-            },
-        });
-
-        res.status(200).json({
-            user: newUser,
-            accessToken,
-        });
-    } catch (e) {
-        console.log(e);
-        res.status(500).json({ message: 'User register error' });
-    }
-};
-
-export default cookies(registerHandler); */
