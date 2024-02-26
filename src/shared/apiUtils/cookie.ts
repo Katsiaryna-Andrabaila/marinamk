@@ -1,9 +1,13 @@
 import { serialize } from 'cookie';
 import { NextApiResponse } from 'next';
-import { CookieArgs, CookiesMiddleware } from '../apiTypes';
+import {
+    CookieArgs,
+    CookiesMiddleware,
+    NextApiResponseWithCookie,
+} from '../apiTypes';
 
-const cookieFn = (
-    res: NextApiResponse,
+export const cookieFn = (
+    res: NextApiResponseWithCookie,
     { name, value, options = {} }: CookieArgs
 ) => {
     const stringValue =
