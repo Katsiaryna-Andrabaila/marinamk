@@ -28,9 +28,7 @@ export async function POST(req: NextRequest, res: NextApiResponseWithCookie) {
             });
         }
 
-        // хэшируем пароль
         const passwordHash = await argon2.hash(data.password);
-        // и заменяем им оригинальный
         data.password = passwordHash;
 
         const newUser = await prisma.user.create({
