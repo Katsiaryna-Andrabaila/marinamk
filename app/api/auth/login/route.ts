@@ -8,9 +8,9 @@ import { serialize } from 'cookie';
 
 export async function POST(req: NextRequest) {
     const body = await req.json();
-    const data: Pick<User, 'email' | 'password'> = body;
+    const data: Pick<User, 'name' | 'password'> = body;
 
-    if (!checkFields(data, ['email', 'password'])) {
+    if (!checkFields(data, ['name', 'password'])) {
         return new Response('Some required fields are missing', {
             status: 400,
         });
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     try {
         const user = await prisma.user.findUnique({
             where: {
-                email: data.email,
+                name: data.name,
             },
 
             select: {

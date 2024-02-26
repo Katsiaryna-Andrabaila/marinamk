@@ -1,27 +1,26 @@
 'use client';
 
-import { AppContext, AppProvider } from 'app/context';
+import { AppProvider } from 'app/context';
 import { AdminContent } from 'widgets/adminContent';
 import { redirect } from 'next/navigation';
-import { useContext, useEffect, useState } from 'react';
-import { IS_ADMIN } from 'shared/const/isAdmin';
+import { useEffect, useState } from 'react';
 import { Spinner } from 'features/spinner';
+import { useUser } from 'shared/apiUtils/swr';
 
 function AdminPage() {
-    const { isAdmin } = useContext(AppContext);
     const [isLoading, setIsLoading] = useState(true);
-    console.log(isAdmin);
+    const { user } = useUser();
 
     useEffect(() => {
-        if (!IS_ADMIN.isAdmin) {
+        if (!user) {
             redirect('/enter');
         }
         setIsLoading(false);
-    }, []);
+    }, [user]);
 
     return (
         <AppProvider>
-            {isLoading || !IS_ADMIN.isAdmin ? <Spinner /> : <AdminContent />}
+            {isLoading || !user ? <Spinner /> : <AdminContent />}
         </AppProvider>
     );
 }

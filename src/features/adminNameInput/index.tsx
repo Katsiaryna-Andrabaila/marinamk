@@ -4,19 +4,25 @@ import { Control, Controller, FieldErrors } from 'react-hook-form';
 type AdminNameInputProps = {
     errors: FieldErrors<AdminFormType>;
     control: Control<AdminFormType, string>;
+    apiErrors: {
+        name?: string | undefined;
+        password?: string | undefined;
+    };
 };
 
-export const AdminNameInput = ({ control, errors }: AdminNameInputProps) => {
+export const AdminNameInput = ({
+    control,
+    errors,
+    apiErrors,
+}: AdminNameInputProps) => {
     return (
         <div className="username_input_wrapper">
             <Controller
-                name="username"
+                name="name"
                 control={control}
                 defaultValue={''}
                 rules={{
                     required: true,
-                    validate: (value) =>
-                        value === process.env.NEXT_PUBLIC_ADMIN_USERNAME,
                 }}
                 render={({ field }) => (
                     <input
@@ -25,14 +31,19 @@ export const AdminNameInput = ({ control, errors }: AdminNameInputProps) => {
                         placeholder="пользователь"
                         autoComplete="off"
                         className={
-                            errors.username
+                            errors.name
                                 ? 'username_input username_error'
                                 : 'username_input'
                         }
                     />
                 )}
             />
-            {errors?.username && (
+            {apiErrors && (
+                <p style={{ color: '#FF3F25', fontSize: '13px' }}>
+                    {apiErrors.name}
+                </p>
+            )}
+            {errors?.name && (
                 <p style={{ color: '#FF3F25', fontSize: '13px' }}>
                     Please, provide correct username
                 </p>

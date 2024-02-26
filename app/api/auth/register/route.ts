@@ -1,17 +1,16 @@
-import { CookieArgs, NextApiResponseWithCookie } from 'shared/apiTypes';
 import checkFields from 'shared/apiUtils/checkFields';
-import { cookieFn } from 'shared/apiUtils/cookie';
 import prisma from 'shared/apiUtils/prisma';
 import { User } from '@prisma/client';
 import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
 import { NextRequest } from 'next/server';
+import { serialize } from 'cookie';
 
-export async function POST(req: NextRequest, res: NextApiResponseWithCookie) {
+export async function POST(req: NextRequest) {
     const body = await req.json();
     const data: Pick<User, 'name' | 'email' | 'password'> = body;
 
-    if (!checkFields(data, ['email', 'password'])) {
+    if (!checkFields(data, ['name', 'email', 'password'])) {
         return new Response('Some required fields are missing', {
             status: 400,
         });
@@ -19,11 +18,11 @@ export async function POST(req: NextRequest, res: NextApiResponseWithCookie) {
 
     try {
         const existingUser = await prisma.user.findUnique({
-            where: { email: data.email },
+            where: { name: data.name },
         });
 
         if (existingUser) {
-            return new Response('Email already in use', {
+            return new Response('Name already in use', {
                 status: 409,
             });
         }
@@ -56,19 +55,19 @@ export async function POST(req: NextRequest, res: NextApiResponseWithCookie) {
             }
         );
 
-        res.cookie({
-            name: process.env.COOKIE_NAME,
-            value: idToken,
-            options: {
-                httpOnly: true,
-                maxAge: 1000 * 60 * 60 * 24 * 7,
-                path: '/',
-                sameSite: true,
-                secure: true,
-            },
-        });
+        const options = {
+            httpOnly: true,
+            maxAge: 60 * 60 * 24 * 7,
+            expires: new Date(Date.now() + 60 * 60 * 24 * 7),
+            path: '/',
+            sameSite: true,
+            secure: true,
+        };
 
-        res.cookie = (args: CookieArgs) => cookieFn(res, args);
+        const stringValue =
+            typeof idToken === 'object'
+                ? 'j:' + JSON.stringify(idToken)
+                : String(idToken);
 
         return new Response(
             JSON.stringify({
@@ -77,6 +76,13 @@ export async function POST(req: NextRequest, res: NextApiResponseWithCookie) {
             }),
             {
                 status: 200,
+                headers: {
+                    'Set-Cookie': serialize(
+                        process.env.COOKIE_NAME,
+                        String(stringValue),
+                        options
+                    ),
+                },
             }
         );
     } catch (e) {

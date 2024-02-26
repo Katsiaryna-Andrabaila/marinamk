@@ -1,4 +1,4 @@
 export type AdminFormType = {
-    username: string;
+    name: string;
     password: string;
 };
