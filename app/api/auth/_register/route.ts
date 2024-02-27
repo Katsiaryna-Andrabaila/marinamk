@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
             }
         );
     } catch (e) {
-        console.log(e);
+        console.error(e);
         return new Response('User register error', {
             status: 500,
         });
@@ -102,6 +102,47 @@ export async function GET() {
     } catch (e) {
         console.error(e);
         return new Response('Internal server error', {
+            status: 500,
+        });
+    }
+}
+
+export async function PATCH(req: NextRequest) {
+    const body: User = await req.json();
+    const data: User = body;
+    const { id, name, email, password } = data;
+
+    if (!checkFields(data, ['id'])) {
+        return new Response('User ID is missing', {
+            status: 400,
+        });
+    }
+
+    try {
+        await prisma.user.update({
+            where: {
+                id,
+            },
+            data: {
+                id,
+                name,
+                email,
+                password,
+            },
+        });
+        return new Response(
+            JSON.stringify({
+                id,
+                name,
+                email,
+            }),
+            {
+                status: 200,
+            }
+        );
+    } catch (e) {
+        console.error(e);
+        return new Response('User update error', {
             status: 500,
         });
     }

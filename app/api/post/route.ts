@@ -1,14 +1,8 @@
-//import { NextApiRequestWithUserId } from 'shared/apiTypes';
-//import authGuard from 'shared/apiUtils/authGuard';
 import checkFields from 'shared/apiUtils/checkFields';
 import prisma from 'shared/apiUtils/prisma';
 import { Post } from '@prisma/client';
-//import { NextApiRequest, NextApiResponse } from 'next';
-//import { createRouter } from 'next-connect';
 import { NextRequest } from 'next/server';
 import { setTimeToDate } from 'shared/apiUtils/setTimeToDate';
-
-//const postsHandler = createRouter<NextApiRequestWithUserId, NextApiResponse>();
 
 export async function GET() {
     try {
@@ -127,5 +121,3 @@ export async function DELETE(req: NextRequest) {
         });
     }
 }
-
-//export default authGuard(postsHandler);

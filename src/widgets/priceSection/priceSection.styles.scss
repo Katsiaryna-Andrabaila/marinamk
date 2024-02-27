@@ -12,9 +12,10 @@
 
     h2 {
         margin-bottom: 2rem;
+        font-family: 'Caveat';
         text-align: center;
         color: var(--grey-5);
-        font-size: 1.3rem;
+        font-size: 1.7rem;
     }
 
     .services {
@@ -22,7 +23,7 @@
         justify-content: space-between;
         width: 11rem;
         margin: auto;
-        border: 1px solid #f5f3f3;
+        border: 1px solid var(--grey-1);
         border-radius: 16px;
         text-align: center;
         font-size: 16px;
@@ -49,12 +50,14 @@
             color: var(--grey-5);
             h3 {
                 margin: 1rem 0 0;
+                font-family: 'Caveat';
+                font-size: 1.5rem;
             }
             .service_price {
                 display: flex;
                 justify-content: space-between;
                 padding: 2rem 0;
-                border-bottom: 1px solid #f5f3f3;
+                border-bottom: 1px solid var(--grey-1);
             }
         }
     }

@@ -57,7 +57,7 @@ export async function GET(req: NextRequest) {
             }
         );
     } catch (e) {
-        console.log(e);
+        console.error(e);
         return new Response('User get error', {
             status: 500,
         });
