@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
             }
         );
     } catch (e) {
-        console.log(e);
+        console.error(e);
         return new Response('User login error', {
             status: 500,
         });
