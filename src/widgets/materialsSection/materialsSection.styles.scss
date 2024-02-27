@@ -6,37 +6,48 @@
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 
-    h2 {
-        margin-bottom: 2rem;
-        text-align: center;
-        color: var(--grey-5);
-        font-size: 1.3rem;
-    }
-    p {
+    .materials-wrapper {
         width: 90%;
         margin: auto;
-        color: var(--grey-5);
-    }
 
-    .materials_images {
-        display: flex;
-        justify-content: space-between;
-        max-height: 10rem;
-        width: 90%;
-        margin: 2rem auto 0;
-        a {
-            position: relative;
+        h2 {
+            margin-bottom: 2rem;
+            font-family: 'Caveat';
+            text-align: left;
+            color: var(--grey-5);
+            font-size: 1.7rem;
+        }
+        p {
+            margin: auto;
+            text-align: left;
+            color: var(--grey-5);
+        }
+
+        .materials_images {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 10%;
-            height: 10vh;
-            img {
-                object-fit: contain;
-                width: 100%;
+            justify-content: space-between;
+            max-height: 10rem;
+            width: 100%;
+            margin: 2rem auto 0;
+            a {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 10%;
+                height: 10vh;
+                transition: 0.5s all ease;
+                img {
+                    object-fit: contain;
+                    width: 100%;
+                }
+                .vogue_img {
+                    width: 60%;
+                }
             }
-            .vogue_img {
-                width: 60%;
+            a:hover {
+                z-index: 1;
+                transform: scale(1.2);
             }
         }
     }

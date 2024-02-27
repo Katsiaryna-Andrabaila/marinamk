@@ -26,7 +26,13 @@ footer {
                 margin-bottom: 0.5rem;
                 a {
                     img {
+                        position: relative;
+                        transition: 0.5s all ease;
                         border-radius: 5px;
+                    }
+                    img:hover {
+                        z-index: 1;
+                        transform: scale(1.2);
                     }
                 }
             }

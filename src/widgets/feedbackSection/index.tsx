@@ -8,11 +8,13 @@ export const FeedbackSection = () => {
 
     return (
         <section className="feedback-section" id="feedback">
-            <h2>{t('feedbackHeader')}</h2>
             <div className="feedback_wrapper">
-                {feedbacks.map((el) => (
-                    <FeedbackCard feedback={el} key={el.id} />
-                ))}
+                <h2>{t('feedbackHeader')}</h2>
+                <div className="feedback_images_wrapper">
+                    {feedbacks.map((el) => (
+                        <FeedbackCard feedback={el} key={el.id} />
+                    ))}
+                </div>
             </div>
         </section>
     );

@@ -18,8 +18,10 @@
             -10px -10px 15px rgba(255, 255, 255, 0.5),
             10px 10px 15px rgba(70, 70, 70, 0.12);
         cursor: pointer;
+        font-family: 'Caveat';
         color: white;
-        font-size: 2rem;
+        font-size: 2.7rem;
+        transition: 0.5s all ease;
     }
     .appointment-btn:hover {
         box-shadow:

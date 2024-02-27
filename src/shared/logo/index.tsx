@@ -1,5 +1,13 @@
 import './logo.styles.scss';
 
 export const Logo = () => {
-    return <span className="logo">MarinaMK</span>;
+    const handleClick = () => {
+        window.location.reload();
+    };
+
+    return (
+        <span className="logo" onClick={handleClick}>
+            MarinaMK
+        </span>
+    );
 };
