@@ -47,7 +47,7 @@ export const Footer = ({ isAbsolute }: FooterProps) => {
                     href="https://www.linkedin.com/in/katsiaryna-andrabaila-94669b23a/"
                     target="_blank"
                 >
-                    @NextStep
+                    @Katsiaryna Andrabaila
                     <span> 2024</span>
                 </Link>
             </div>

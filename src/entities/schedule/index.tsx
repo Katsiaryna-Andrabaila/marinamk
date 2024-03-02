@@ -29,10 +29,16 @@ export const Schedule = () => {
     const resultData = data
         .filter((el) => new Date(setTimeToDate(el.date, el.time)) >= new Date())
         .sort((a, b) => {
+            const aHours = Number(a.time.slice(0, a.time.indexOf(':')));
+            const bHours = Number(b.time.slice(0, b.time.indexOf(':')));
+            const aMinutes = Number(a.time.slice(a.time.indexOf(':') + 1));
+            const bMinutes = Number(b.time.slice(b.time.indexOf(':') + 1));
             if (a.date < b.date) return -1;
             if (a.date > b.date) return 1;
-            if (a.time < b.time) return -1;
-            if (a.time > b.time) return 1;
+            if (aHours < bHours) return -1;
+            if (aHours > bHours) return 1;
+            if (aMinutes < bMinutes) return -1;
+            if (aMinutes > bMinutes) return 1;
             return 0;
         });
 
@@ -49,39 +55,49 @@ export const Schedule = () => {
                 </thead>
 
                 <tbody>
-                    {resultData.map((item) => (
-                        <tr key={item.id}>
-                            <td className="date_cell">
-                                <p>{getSlotDate(item.date, 'ru')}</p>
-                                <p>{item.time}</p>
-                            </td>
-                            <td className="service_cell">
-                                <p>
-                                    {
-                                        RU_NAMES[
-                                            item.procedure as keyof typeof RU_NAMES
-                                        ]
-                                    }
-                                </p>
-                                <p>{item.clientName}</p>
-                                <p>{item.clientEmail}</p>
-                            </td>
-                            <td className="edit_cell">
-                                <Edit
-                                    slot={item}
-                                    setIsEditModalOpen={setIsEditModalOpen}
-                                    setActiveSlot={setActiveSlot}
-                                />
-                            </td>
-                            <td className="delete_cell">
-                                <Delete
-                                    id={item.id}
-                                    data={data}
-                                    setData={setData}
-                                />
-                            </td>
+                    {!resultData.length ? (
+                        <tr>
+                            <td>У вас нет активных записей в базе данных</td>
                         </tr>
-                    ))}
+                    ) : (
+                        resultData.map((item) => (
+                            <tr key={item.id}>
+                                <td className="date_cell">
+                                    <p>{getSlotDate(item.date, 'ru')}</p>
+                                    <p>
+                                        {item.time.length === 4
+                                            ? `0${item.time}`
+                                            : item.time}
+                                    </p>
+                                </td>
+                                <td className="service_cell">
+                                    <p>
+                                        {
+                                            RU_NAMES[
+                                                item.procedure as keyof typeof RU_NAMES
+                                            ]
+                                        }
+                                    </p>
+                                    <p>{item.clientName}</p>
+                                    <p>{item.clientEmail}</p>
+                                </td>
+                                <td className="edit_cell">
+                                    <Edit
+                                        slot={item}
+                                        setIsEditModalOpen={setIsEditModalOpen}
+                                        setActiveSlot={setActiveSlot}
+                                    />
+                                </td>
+                                <td className="delete_cell">
+                                    <Delete
+                                        id={item.id}
+                                        data={data}
+                                        setData={setData}
+                                    />
+                                </td>
+                            </tr>
+                        ))
+                    )}
                 </tbody>
             </table>
             {isEditModalOpen && activeSlot && (

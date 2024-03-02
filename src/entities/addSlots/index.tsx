@@ -109,7 +109,7 @@ export const AddSlots = () => {
                 />
             </form>
             <button className="clean_base_button" onClick={handleCleanClick}>
-                Оптимизировать БД
+                Очистить базу данных
             </button>
         </>
     );

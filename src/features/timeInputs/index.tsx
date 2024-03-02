@@ -37,8 +37,25 @@ export const TimeInputs = ({
 
             setTime(
                 targetTime.sort(
-                    (a: { id: ''; time: '' }, b: { id: ''; time: '' }) =>
-                        Number(a.time.slice(0, 2)) - Number(b.time.slice(0, 2))
+                    (a: { id: ''; time: '' }, b: { id: ''; time: '' }) => {
+                        const aHours = Number(
+                            a.time.slice(0, a.time.indexOf(':'))
+                        );
+                        const bHours = Number(
+                            b.time.slice(0, b.time.indexOf(':'))
+                        );
+                        const aMinutes = Number(
+                            a.time.slice(a.time.indexOf(':') + 1)
+                        );
+                        const bMinutes = Number(
+                            b.time.slice(b.time.indexOf(':') + 1)
+                        );
+                        if (aHours < bHours) return -1;
+                        if (aHours > bHours) return 1;
+                        if (aMinutes < bMinutes) return -1;
+                        if (aMinutes > bMinutes) return 1;
+                        return 0;
+                    }
                 )
             );
         }
@@ -57,7 +74,7 @@ export const TimeInputs = ({
                                       required: true,
                                   })}
                               />
-                              {el.time}
+                              {el.time.length === 4 ? `0${el.time}` : el.time}
                           </label>
                       </div>
                   ))
