@@ -27,7 +27,7 @@ const securityHeaders = [
 
 const nextConfig = {
     reactStrictMode: true,
-    output: 'export',
+    //output: 'export',
     async headers() {
         return [
             {
