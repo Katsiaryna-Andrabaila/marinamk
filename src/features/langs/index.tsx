@@ -13,7 +13,7 @@ export const Langs = () => {
         <div className="langs">
             <span
                 onClick={() => handleChangeLang('en')}
-                className={lang === 'en' ? 'lang_active' : ''}
+                className={lang === 'en' || !lang ? 'lang_active' : ''}
             >
                 EN
             </span>
