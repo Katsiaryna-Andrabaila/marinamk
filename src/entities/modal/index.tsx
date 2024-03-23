@@ -35,7 +35,7 @@ export const Modal = () => {
     });
 
     useEffect(() => {
-        fetch('/api/appointment')
+        fetch('/api/post')
             .then((res) => res.json())
             .then((data) => {
                 setData(
