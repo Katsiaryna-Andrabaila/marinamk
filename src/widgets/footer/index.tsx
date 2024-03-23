@@ -44,7 +44,7 @@ export const Footer = ({ isAbsolute }: FooterProps) => {
                     )}
                 </div>
                 <Link
-                    href="https://www.linkedin.com/in/katsiaryna-andrabaila-94669b23a/"
+                    href="https://katsiarynaandrabaila.vercel.app/"
                     target="_blank"
                 >
                     @Katsiaryna Andrabaila

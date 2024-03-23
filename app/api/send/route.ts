@@ -5,14 +5,14 @@ import { EmailMessage } from '../../../src/entities/emailMessage';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
-    const { name, email, date, time } = await req.json();
+    const { name, email, date } = await req.json();
 
     try {
         const data = await resend.emails.send({
-            from: 'Hello <rayden@sonya.dev>', // your verified domain
+            from: 'no-reply <admin@marinamk.net>', // your verified domain
             to: `${email}`, // the email address you want to send a message
             subject: `${name} has a message!`,
-            react: EmailMessage({ name, date, time }),
+            react: EmailMessage({ name, date }),
         });
 
         if (data.data) {
