@@ -57,7 +57,12 @@ export const EditSlotModal = ({
                 id="edit_slot_form"
                 onClick={(e) => e.stopPropagation()}
             >
-                <h2>{`${getSlotDate(slot.date, lang)} ${slot.time}`}</h2>
+                <h2>{`${getSlotDate(slot.date, lang)} ${`${new Date(
+                    slot.date
+                ).getHours()}:${new Date(slot.date)
+                    .getMinutes()
+                    .toString()
+                    .padStart(2, '0')}`}`}</h2>
                 <EditProcedureSelect
                     register={register}
                     errors={errors}

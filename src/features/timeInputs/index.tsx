@@ -1,4 +1,4 @@
-import { Post } from '@prisma/client';
+/* import { Post } from '@prisma/client';
 import { AppointmentFormType } from '../../entities/modal/lib/types';
 import { useEffect, useState } from 'react';
 import { FieldErrors, UseFormRegister, UseFormWatch } from 'react-hook-form';
@@ -87,3 +87,4 @@ export const TimeInputs = ({
         </div>
     );
 };
+ */

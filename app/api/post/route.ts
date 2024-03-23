@@ -21,12 +21,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const data: Pick<
         Post,
-        | 'date'
-        | 'time'
-        | 'clientName'
-        | 'clientEmail'
-        | 'procedure'
-        | 'isAvailable'
+        'date' | 'clientName' | 'clientEmail' | 'procedure' | 'isAvailable'
     > = body;
 
     if (!checkFields(data, ['date', 'isAvailable'])) {
@@ -59,8 +54,7 @@ export async function POST(req: NextRequest) {
 export async function PATCH(req: NextRequest) {
     const body: Post = await req.json();
     const data: Post = body;
-    const { id, date, time, clientName, clientEmail, procedure, isAvailable } =
-        data;
+    const { id, date, clientName, clientEmail, procedure, isAvailable } = data;
 
     if (!checkFields(data, ['id'])) {
         return new Response('Post ID is missing', {
@@ -75,7 +69,6 @@ export async function PATCH(req: NextRequest) {
             },
             data: {
                 date,
-                time,
                 clientName,
                 clientEmail,
                 procedure,

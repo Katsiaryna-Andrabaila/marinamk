@@ -6,13 +6,9 @@ import { AppContext } from 'app/context';
 
 type ToastSuccessNoEmailProps = {
     date: Date;
-    time: string | undefined;
 };
 
-export const ToastSuccessNoEmail = ({
-    date,
-    time,
-}: ToastSuccessNoEmailProps) => {
+export const ToastSuccessNoEmail = ({ date }: ToastSuccessNoEmailProps) => {
     const { t } = useTranslation();
     const { lang } = useContext(AppContext);
 
@@ -22,7 +18,12 @@ export const ToastSuccessNoEmail = ({
             <p>{t('toast-success-appointment-no-email2')}</p>
             <p>{t('toast-success-appointment-no-email3')}</p>
             <p>
-                <b>{`${getSlotDate(date, lang)} ${time || ''}`}</b>
+                <b>{`${getSlotDate(date, lang)} ${`${new Date(
+                    date
+                ).getHours()}:${new Date(date)
+                    .getMinutes()
+                    .toString()
+                    .padStart(2, '0')}`}`}</b>
             </p>
         </div>
     );

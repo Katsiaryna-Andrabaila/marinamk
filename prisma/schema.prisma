@@ -18,7 +18,6 @@ model User {
 model Post {
   id          String   @id @default(uuid())
   date        DateTime @unique
-  time        String
   clientName  String?
   clientEmail String?
   procedure   String?

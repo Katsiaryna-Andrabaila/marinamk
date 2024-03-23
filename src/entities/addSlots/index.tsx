@@ -31,7 +31,6 @@ export const AddSlots = () => {
                 method: 'POST',
                 body: JSON.stringify({
                     date: new Date(date.setUTCHours(hours)),
-                    time: '',
                     clientName: '',
                     clientEmail: '',
                     procedure: '',

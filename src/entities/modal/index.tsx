@@ -88,13 +88,9 @@ export const Modal = () => {
 
                 sendResponse.ok
                     ? toast.success(t('toast-success-appointment-email'))
-                    : toast.warn(
-                          <ToastSuccessNoEmail
-                              date={date}
-                              time={targetSlot?.time}
-                          />,
-                          { autoClose: false }
-                      );
+                    : toast.warn(<ToastSuccessNoEmail date={date} />, {
+                          autoClose: false,
+                      });
             } else {
                 toast.error(t('toast-error-appointment'));
             }

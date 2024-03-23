@@ -63,9 +63,6 @@ export const Schedule = () => {
                                                 .getMinutes()
                                                 .toString()
                                                 .padStart(2, '0')}`}
-                                            {/* {item.time.length === 4
-                                                ? `0${item.time}`
-                                                : item.time} */}
                                         </p>
                                     </div>
                                 </td>
