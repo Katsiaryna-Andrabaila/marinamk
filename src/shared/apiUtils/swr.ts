@@ -26,7 +26,7 @@ export function useUser() {
     // `data.message` - сообщение о кастомной ошибке, например:
     // res.status(404).json({ message: 'User not found' })
     if (error || (data as { message: string } | undefined)?.message) {
-        console.log(
+        console.error(
             error || (data as { message: string } | undefined)?.message
         );
 
