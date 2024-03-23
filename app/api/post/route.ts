@@ -2,7 +2,6 @@ import checkFields from 'shared/apiUtils/checkFields';
 import prisma from 'shared/apiUtils/prisma';
 import { Post } from '@prisma/client';
 import { NextRequest } from 'next/server';
-import { setTimeToDate } from 'shared/apiUtils/setTimeToDate';
 
 export async function GET() {
     try {
@@ -30,14 +29,13 @@ export async function POST(req: NextRequest) {
         | 'isAvailable'
     > = body;
 
-    if (!checkFields(data, ['date', 'time', 'isAvailable'])) {
+    if (!checkFields(data, ['date', 'isAvailable'])) {
         return new Response('Some required fields are missing', {
             status: 400,
         });
     }
 
-    const slotTimeStamp = new Date(setTimeToDate(body.date, body.time));
-    if (slotTimeStamp < new Date()) {
+    if (body.date < new Date()) {
         return new Response('Unable to add slot with expired date', {
             status: 400,
         });

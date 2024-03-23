@@ -36,6 +36,9 @@ export const DateInput = ({ control, errors, slots }: DateInputProps) => {
         }
     };
 
+    const filterPassedTime = (time: Date) =>
+        slots.map((el) => new Date(el.date).getTime()).includes(time.getTime());
+
     return (
         <>
             <Controller
@@ -52,6 +55,10 @@ export const DateInput = ({ control, errors, slots }: DateInputProps) => {
                         includeDates={availableDates}
                         inline
                         onChange={(date) => field.onChange(date)}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={30}
+                        filterTime={filterPassedTime}
                     />
                 )}
             />

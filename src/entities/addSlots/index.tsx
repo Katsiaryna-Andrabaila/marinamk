@@ -5,40 +5,42 @@ import DatePicker from 'react-datepicker';
 import './lib/addSlots.styles.scss';
 import { AddSlotFormType } from './lib/types';
 import 'react-datepicker/dist/react-datepicker.css';
-import { AddTimeInputs } from 'features/addTimeInput';
 import { Post } from '@prisma/client';
+import { setHours, setMinutes } from 'date-fns';
 
 export const AddSlots = () => {
     const {
-        register,
         handleSubmit,
-        watch,
+
         reset,
         control,
-        formState: { errors, isValid },
+        formState: { isValid },
     } = useForm<AddSlotFormType>({
         mode: 'all',
     });
 
-    const onsubmit: SubmitHandler<AddSlotFormType> = (data) => {
-        const { date, time } = data;
-        time.forEach(async (el) => {
-            try {
-                await fetch('api/post', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        date,
-                        time: el,
-                        clientName: '',
-                        clientEmail: '',
-                        procedure: '',
-                        isAvailable: true,
-                    }),
-                });
-            } catch (e) {
-                console.error(e);
-            }
-        });
+    const onsubmit: SubmitHandler<AddSlotFormType> = async (data) => {
+        const { date } = data;
+
+        const timeZone = date.getTimezoneOffset();
+        const hours = date.getHours();
+        console.log(date, timeZone, hours);
+
+        try {
+            await fetch('api/post', {
+                method: 'POST',
+                body: JSON.stringify({
+                    date: new Date(date.setUTCHours(hours)),
+                    time: '',
+                    clientName: '',
+                    clientEmail: '',
+                    procedure: '',
+                    isAvailable: true,
+                }),
+            });
+        } catch (e) {
+            console.error(e);
+        }
 
         reset();
     };
@@ -66,6 +68,13 @@ export const AddSlots = () => {
         });
     };
 
+    const filterPassedTime = (time: Date) => {
+        const currentDate = new Date();
+        const selectedDate = new Date(time);
+
+        return currentDate.getTime() < selectedDate.getTime();
+    };
+
     return (
         <>
             <form
@@ -87,6 +96,15 @@ export const AddSlots = () => {
                                 inline
                                 minDate={new Date()}
                                 onChange={(date) => field.onChange(date)}
+                                showTimeSelect
+                                timeFormat="HH:mm"
+                                timeIntervals={30}
+                                filterTime={filterPassedTime}
+                                minTime={setHours(setMinutes(new Date(), 0), 8)}
+                                maxTime={setHours(
+                                    setMinutes(new Date(), 0),
+                                    22
+                                )}
                             />
                         )}
                     />
@@ -96,11 +114,6 @@ export const AddSlots = () => {
                     </p>
                 )} */}
                 </>
-                <AddTimeInputs
-                    watch={watch}
-                    register={register}
-                    errors={errors}
-                />
                 <input
                     type="submit"
                     value="Добавить"

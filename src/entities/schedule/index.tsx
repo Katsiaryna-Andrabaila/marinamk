@@ -6,7 +6,6 @@ import { Edit } from 'shared/ui/Edit';
 import { Delete } from 'shared/ui/Delete';
 import { EditSlotModal } from '../editSlotModal';
 import { RU_NAMES } from 'shared/const/procedureRuNames';
-import { setTimeToDate } from 'shared/apiUtils/setTimeToDate';
 
 export const Schedule = () => {
     const [data, setData] = useState<Post[] | null>(null);
@@ -27,18 +26,10 @@ export const Schedule = () => {
     if (!data) return <p>No data</p>;
 
     const resultData = data
-        .filter((el) => new Date(setTimeToDate(el.date, el.time)) >= new Date())
+        .filter((el) => new Date(el.date) >= new Date())
         .sort((a, b) => {
-            const aHours = Number(a.time.slice(0, a.time.indexOf(':')));
-            const bHours = Number(b.time.slice(0, b.time.indexOf(':')));
-            const aMinutes = Number(a.time.slice(a.time.indexOf(':') + 1));
-            const bMinutes = Number(b.time.slice(b.time.indexOf(':') + 1));
             if (a.date < b.date) return -1;
             if (a.date > b.date) return 1;
-            if (aHours < bHours) return -1;
-            if (aHours > bHours) return 1;
-            if (aMinutes < bMinutes) return -1;
-            if (aMinutes > bMinutes) return 1;
             return 0;
         });
 
@@ -63,12 +54,20 @@ export const Schedule = () => {
                         resultData.map((item) => (
                             <tr key={item.id}>
                                 <td className="date_cell">
-                                    <p>{getSlotDate(item.date, 'ru')}</p>
-                                    <p>
-                                        {item.time.length === 4
-                                            ? `0${item.time}`
-                                            : item.time}
-                                    </p>
+                                    <div>
+                                        <p>{getSlotDate(item.date, 'ru')}</p>
+                                        <p>
+                                            {`${new Date(
+                                                item.date
+                                            ).getHours()}:${new Date(item.date)
+                                                .getMinutes()
+                                                .toString()
+                                                .padStart(2, '0')}`}
+                                            {/* {item.time.length === 4
+                                                ? `0${item.time}`
+                                                : item.time} */}
+                                        </p>
+                                    </div>
                                 </td>
                                 <td className="service_cell">
                                     <p>

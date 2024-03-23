@@ -1,4 +1,5 @@
 .schedule_table {
+    flex: 1 1 0;
     width: 100%;
     margin: 3rem auto;
     border-collapse: collapse;
@@ -16,9 +17,11 @@
                 }
             }
             .date_cell {
-                display: flex;
-                flex-direction: column;
-                gap: 0.5rem;
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
             }
             .edit_cell,
             .delete_cell {

@@ -43,26 +43,64 @@
             gap: 1rem;
             width: 70%;
 
+            .react-datepicker {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
             .react-datepicker__header {
                 background-color: var(--main-blue);
             }
 
             .react-datepicker__month-container {
-                float: unset;
+                width: 100%;
             }
 
             .react-datepicker__day--keyboard-selected {
                 background-color: unset;
             }
 
+            .react-datepicker__time-container {
+                width: 80%;
+                border: none;
+                margin-bottom: 1rem;
+            }
+
+            .react-datepicker__time-box {
+                width: 100%;
+            }
+
+            .react-datepicker__header--time,
+            .react-datepicker__time-list-item.react-datepicker__time-list-item--disabled {
+                display: none;
+            }
+
+            .react-datepicker__time-list {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 1rem;
+                overflow-y: hidden !important;
+                height: unset !important;
+            }
+
+            .react-datepicker__time-list-item {
+                width: 25%;
+                border: 1px solid var(--main-blue);
+                border-radius: 5px;
+            }
+
             .time_wrapper {
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
+                align-items: center;
                 gap: 1rem;
                 padding: 0;
                 margin: 0;
-                align-items: center;
                 list-style: none;
                 text-align: center;
 
@@ -198,6 +236,9 @@
         .modal {
             .appointment_form {
                 width: 90%;
+                .react-datepicker__time-container {
+                    width: 95%;
+                }
             }
         }
     }

@@ -7,7 +7,6 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { AppointmentFormType } from './lib/types';
 import { useTranslation } from 'react-i18next';
 import { EmailInput } from 'features/emailInput';
-import { TimeInputs } from 'features/timeInputs';
 import { ProcedureSelect } from 'features/procedureSelect';
 import { DateInput } from 'features/dateInput';
 import { Post } from '@prisma/client';
@@ -15,7 +14,6 @@ import { NameInput } from 'features/nameInput';
 import { toast } from 'react-toastify';
 import { ToastSuccessNoEmail } from 'features/toastSuccessNoEmail';
 import { Spinner } from 'features/spinner';
-import { setTimeToDate } from 'shared/apiUtils/setTimeToDate';
 
 export const Modal = () => {
     const { setIsModalOpen } = useContext(AppContext);
@@ -26,7 +24,6 @@ export const Modal = () => {
     const {
         register,
         handleSubmit,
-        watch,
         reset,
         control,
         formState: { errors, isValid },
@@ -39,11 +36,7 @@ export const Modal = () => {
             .then((res) => res.json())
             .then((data) => {
                 setData(
-                    data.filter(
-                        (el: Post) =>
-                            new Date(setTimeToDate(el.date, el.time)) >=
-                            new Date()
-                    )
+                    data.filter((el: Post) => new Date(el.date) >= new Date())
                 );
                 setLoading(false);
             });
@@ -52,13 +45,19 @@ export const Modal = () => {
     const handleClose = () => setIsModalOpen && setIsModalOpen(false);
 
     const onsubmit: SubmitHandler<AppointmentFormType> = async (submitData) => {
-        const { date, time, procedure, clientName, clientEmail } = submitData;
-        const targetSlot: Post | undefined = data?.find((el) => el.id === time);
+        const { date, procedure, clientName, clientEmail } = submitData;
+        console.log(date.getTime());
+        data?.forEach((el) => {
+            console.log(new Date(el.date).getTime());
+        });
+        const targetSlot: Post | undefined = data?.find(
+            (el) => new Date(el.date).getTime() === date.getTime()
+        );
+        console.log(targetSlot);
 
         const body = {
-            id: time,
+            id: targetSlot?.id,
             date,
-            time: targetSlot?.time,
             procedure,
             clientName,
             clientEmail,
@@ -84,7 +83,6 @@ export const Modal = () => {
                         name: clientName,
                         email: clientEmail,
                         date,
-                        time,
                     }),
                 });
 
@@ -123,12 +121,6 @@ export const Modal = () => {
                     id="appointment_form"
                 >
                     <DateInput control={control} errors={errors} slots={data} />
-                    <TimeInputs
-                        watch={watch}
-                        register={register}
-                        errors={errors}
-                        slots={data}
-                    />
                     <ProcedureSelect register={register} errors={errors} />
                     <NameInput errors={errors} control={control} />
                     <EmailInput errors={errors} control={control} />
