@@ -27,6 +27,10 @@
         background-color: var(--main-green);
     }
 
+    .react-datepicker__time-list-item--disabled {
+        display: none;
+    }
+
     .react-datepicker__time-list-item--selected {
         background-color: var(--main-green) !important;
     }
